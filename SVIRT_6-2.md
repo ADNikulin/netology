@@ -33,6 +33,19 @@
 Можете использовать пример [по ссылке](https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/x86/alpine-standard-3.13.5-x86.iso).
 
 Пример взят [с сайта](https://alpinelinux.org). 
+
+### Решение 2 
+
+1. Установка утилит:\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/3b676951-e5ca-4cd3-bdc8-5ebabe9afcbb).
+2. Создание диска и виртуальной машины (Использовался указанный репозиторий)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/820a45dc-c340-47e7-92e4-07177e1ae577)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/a2e8dd1b-ea84-417c-8396-de8d2116525d)\
+3. Собственно запуск\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/7f5ffefd-9479-4f52-8610-773d157c0564)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/46891ee6-adbc-4ae3-ad5a-ce200bba6e45)
+
+
  
 ---
 
@@ -46,7 +59,19 @@
 Можете использовать пример [по ссылке](https://dl-cdn.alpinelinux.org/alpine/v3.13/releases/x86/alpine-standard-3.13.5-x86.iso). 
 
 Пример взят [с сайта](https://alpinelinux.org). 
- 
+
+### Решение 3 
+1. Подключил KVM\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/a6b49dd1-56db-4fbf-9632-d8dd3fd6b823)
+2. Установил либы и virt-manager\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/762fbf7c-e144-466a-98f9-fb143046cb94)
+3. Установка + использование\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/bb1f3f01-79dc-46ec-b181-bee6ec6a9b81)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/f460eef5-0198-4d41-ac11-0b02cec53192)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/8d159f73-c488-45e1-b50d-dd7d795f346a)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/91cd8977-d278-46dd-9e80-93ee83ba96a8)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/27d36d39-6969-4bba-8d31-f20684aa4fdc)\
+   ![image](https://github.com/ADNikulin/netology/assets/44374132/a691dae8-c215-49f2-b772-50c28d8286ca)
  ---
 
 ### Задание 4
