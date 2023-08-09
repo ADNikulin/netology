@@ -84,6 +84,10 @@
 
 ![image](https://user-images.githubusercontent.com/73060384/118615008-f95e9680-b7c8-11eb-9610-fc1e73d8bd70.png)
 
+### Решение 4
+Результат установки, настройки, даже попинговал два компа
+![image](https://github.com/ADNikulin/netology/assets/44374132/c7e73030-17fa-4fde-a2ef-1ad5e3f92c29)
+
 
 ---
 
