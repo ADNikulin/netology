@@ -86,3 +86,11 @@
  * скриншот браузера, где apache2 из вашего контейнера выводит ваши ФИО.
 
 ### Решение 6
+
+![image](https://github.com/ADNikulin/netology/assets/44374132/6273d0ea-30aa-4292-8e3a-1fa95346c071)\
+![image](https://github.com/ADNikulin/netology/assets/44374132/69db4f87-3503-4a85-8e22-bbf5bc8f3c9e)\
+![image](https://github.com/ADNikulin/netology/assets/44374132/bca451b8-8b99-4114-bc77-b5f39be70281)
+
+
+
+
