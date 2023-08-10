@@ -67,7 +67,14 @@
  * скриншот браузера, где вы открыли дефолтную страницу вашего apache внутри контейнера.
 
 ### Решение 5
-![image](https://github.com/ADNikulin/netology/assets/44374132/67c63a5b-f5c8-4ca3-b775-f1b31c6c8904)
+* Собственно докер был установлен.
+* Подготовил докер файл
+* Стартонул\
+
+![image](https://github.com/ADNikulin/netology/assets/44374132/67c63a5b-f5c8-4ca3-b775-f1b31c6c8904)\
+![image](https://github.com/ADNikulin/netology/assets/44374132/6104be67-4ead-49a2-9d40-77ddf9a1b4a0)\
+![image](https://github.com/ADNikulin/netology/assets/44374132/a365d4a7-e21f-4737-82d6-4845e11ba665)\
+![image](https://github.com/ADNikulin/netology/assets/44374132/ed7a1365-b82f-4659-bdf1-22749930b17d)
 
 ---
 
