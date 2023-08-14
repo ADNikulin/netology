@@ -31,6 +31,8 @@
 
 ### Решение 2
 
+![image](https://github.com/ADNikulin/netology/assets/44374132/7d68b5c4-19c6-4294-9b69-ec12b2253e91)
+
 ---
 
 ### Задание 3 
@@ -44,6 +46,8 @@
 5. Назначьте для данного контейнера статический IP из подсети 172.22.0.0/24.
 
 ### Решение 3
+
+![image](https://github.com/ADNikulin/netology/assets/44374132/86cf2144-b645-4429-90a1-bb53fab3f14b)
 
 ---
 
