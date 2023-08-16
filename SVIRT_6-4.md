@@ -115,6 +115,94 @@
 
 ### Решение 7
 
+```
+version: "3"
+services:
+
+  nikulinad-netology-db: 
+    image: postgres:latest
+    container_name: nikulinad-netology-db
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/pgdata
+    environment:
+      POSTGRES_PASSWORD: nikulinad12!3!!
+      POSTGRES_DB: nikulinad_db
+      PGDATA: /var/lib/postgresql/data/pgdata # Путь внутри контейнера, где будет папка pgdata
+    ports:
+      - 5432:5432
+    networks:
+      nikulinad-my-netology-hw:
+        ipv4_address: 172.22.0.2
+
+    restart: always # контейнер всегда будет перезапускаться
+
+  nikulinad-netology-pgadmin: 
+    image: dpage/pgadmin4
+    links:
+      - nikulinad-netology-db
+    container_name: nikulinad-netology-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: nikulinad@ilove-netology.com
+      PGADMIN_DEFAULT_PASSWORD: nikulinad12!3!!
+    ports:
+      - 61231:80
+    networks:
+      nikulinad-my-netology-hw:
+        ipv4_address: 172.22.0.3
+
+    restart: always # контейнер всегда будет перезапускаться
+
+  nikulinad-netology-zabbix:
+    image: zabbix/zabbix-server-pgsql
+    links:
+      - nikulinad-netology-db
+      - nikulinad-netology-pgadmin
+    container_name: nikulinad-netology-zabbix
+    environment:
+      DB_SERVER_HOST: '172.22.0.2'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: nikulinad12!3!!
+    ports:
+      - "10051:10051"
+    networks:
+      nikulinad-my-netology-hw:
+        ipv4_address: 172.22.0.4
+    restart: always
+
+  nikulinad-netology-zabbix-frontend:
+    image: zabbix/zabbix-web-apache-pgsql
+    links: 
+      - nikulinad-netology-db
+      - nikulinad-netology-pgadmin
+      - nikulinad-netology-zabbix
+    container_name: nikulinad-netology-zabbix-frontend
+    environment:
+      DB_SERVER_HOST: '172.22.0.2'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: nikulinad12!3!!
+      ZBX_SERVER_HOST: 'zabbix_wgui'
+      PHP_TZ: "Europe/Moscow"
+    ports:
+      - "80:8080"
+      - "443:8443"
+    networks:
+      nikulinad-my-netology-hw:
+        ipv4_address: 172.22.0.5
+    restart: always
+
+networks:
+  nikulinad-my-netology-hw:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/24
+          gateway: 172.22.0.1
+```
+
+![image](https://github.com/ADNikulin/netology/assets/44374132/3ac72e68-1612-4834-a7bb-a2a0d4a266fe)
+![image](https://github.com/ADNikulin/netology/assets/44374132/b2414775-d0d9-429c-85c8-69ccf09a1e56)
+
 ---
 
 ### Задание 8 
@@ -125,6 +213,8 @@
 1. Приложите скриншот консоли с проделанными действиями.
 
 ### Решение 8
+
+![image](https://github.com/ADNikulin/netology/assets/44374132/ba02b240-c86a-48fe-837b-60b1a4c477ad)
 
 ---
 
@@ -142,6 +232,10 @@
 
 1. Сколько ушло времени на то, чтобы развернуть на чистом железе написанный вами сценарий?
 2. Чем вы занимались в процессе создания сценария так, как это видите вы?
-
+3. Что бы вы улучшили в сценарии развёртывания?
+   
 ### Решение 9
-4. Что бы вы улучшили в сценарии развёртывания?
+
+> 1. Снес все контейнеры, образы и т.п. Запустил сценарий заново. На развертку всего ушло 2-4 минуты. Круто) На написание сценария развертки ушло в разы больше времени. 
+> 2. Указывал какие сервисы устанавливаем, как они должны быть связанны между собой, настройка сетевых настроек с прокидыванием переменных окружения. Второй момент это отрабатывал сценарий и првоерял все ли параметры проброшены и укзааны правильно
+> 3. Думаю что на данном этапе на этот вопрос не отвечу, т.к. для начала надо побольше с ним поработать и поустанавливать разные сервисы с использование докера. 
