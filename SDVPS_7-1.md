@@ -45,7 +45,7 @@
 
 ### Решение 3
 
-> Forks - Максимальное количество узлов в одной партии, на которых будет параллельно выполняться задачи.
+> Forks - Максимальное количество узлов в одной партии, на которых будет параллельно выполняться задачи. \
 > Serial - Опция заставляет Ansible разбить список хостов в текущей партии на пачки.
 > т.е. Если бы у нас было 6 хостов и параметр ```serial``` был бы установлен на 3, то произошло бы обновление сначала 3х, потом вторым заходом еще 3х.
 
@@ -60,4 +60,17 @@
 1. Установите на управляемых хостах любой пакет, которого нет.
 2. Проверьте статус любого, присутствующего на управляемой машине, сервиса. 
 3. Создайте файл с содержимым «I like Linux» по пути /tmp/netology.txt.
- 
+
+### Решение 4
+
+> 1. ![image](https://github.com/ADNikulin/netology/assets/44374132/3900febb-6d78-4d04-b195-d540392ace5b) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/4dd95547-0575-4c55-afd6-386fca0d9573) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/ca63ae45-2b41-4776-b49a-31837a2fa627) \
+> 2. ![image](https://github.com/ADNikulin/netology/assets/44374132/0c4a732c-e651-45c8-bc00-11412a64d542) \
+> 3. ![image](https://github.com/ADNikulin/netology/assets/44374132/020c7ae0-3b4a-4e17-85bd-a7228b0678fe) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/3fdd672e-ecd5-45a7-bfc9-b22dcc625ca7)
+
+
+
+
+
