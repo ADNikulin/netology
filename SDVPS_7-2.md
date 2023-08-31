@@ -16,6 +16,63 @@
 3. Изменить приветствие системы (motd) при входе на любое другое. Пожалуйста, в этом задании используйте переменную для задания приветствия. Переменную можно задавать любым удобным способом.
 
 ### Решение 1
+1. Первый плейбук:
+```yaml
+---
+- name: install-kafka
+  hosts: all
+  become: yes
+  tasks: 
+    - name: Creates directory
+      file:
+        path: /var/tmp/bins
+        state: directory
+    - name: Download and unpack
+      unarchive:
+        src: https://downloads.apache.org/kafka/3.5.1/kafka-3.5.1-src.tgz
+        dest: /var/tmp/bins
+        remote_src: yes
+```
+![image](https://github.com/ADNikulin/netology/assets/44374132/a43b3957-4efd-40b4-ba2e-d1d3466827d6)
+![image](https://github.com/ADNikulin/netology/assets/44374132/03c6e9df-3b47-41fe-8068-0fb29af2e7aa)
+
+2. Второй плейбук:
+```yaml
+- name: install tuned
+  hosts: all
+  become: yes
+  tasks: 
+    - name: install
+      apt: 
+        name: 
+          - tuned
+        state: present
+    - name: start service
+      systemd:
+        name: tuned
+        state: started
+        enabled: yes
+```
+![image](https://github.com/ADNikulin/netology/assets/44374132/c75806ba-d450-4294-90fd-9024f1f85db5)
+![image](https://github.com/ADNikulin/netology/assets/44374132/0b6fcf09-b06c-4fde-bc07-7cf7d22d5f7a)
+
+3. motd
+```yaml
+---
+- name: change motd
+  hosts: all
+  become: true
+  vars:
+    path: /etc/update-motd.d/
+  tasks:
+    - name: Entrance change
+      file:
+        path: "{{path}}"
+        mode: u=rw,g=rw,o=rw
+        recurse: yes
+```
+![image](https://github.com/ADNikulin/netology/assets/44374132/83245d19-d723-43c1-a0d7-58be1bf0b5fb)
+![image](https://github.com/ADNikulin/netology/assets/44374132/06984b43-3cd1-43ed-ad58-915df6163698)
 
 ---
 ### Задание 2
@@ -25,6 +82,32 @@
 Модифицируйте плейбук из пункта 3, задания 1. В качестве приветствия он должен установить IP-адрес и hostname управляемого хоста, пожелание хорошего дня системному администратору. 
 
 ### Решение 2
+Подготовил файл: \
+![image](https://github.com/ADNikulin/netology/assets/44374132/7b2d977c-d4c2-4c41-b075-2482aae213ba) \
+Плейбук:
+```yaml
+---
+- name: change motd
+  hosts: all
+  become: true
+  vars:
+    path: /etc/update-motd.d/
+  tasks:
+    - name: Entrance change
+      file:
+        path: "{{path}}"
+        mode: u=rw,g=rw,o=rw
+        recurse: yes
+    - name: Add message
+      template:
+        src: /home/user/ansible_configs/motd.j2
+        dest: /etc/motd
+        mode: '644'
+```
+Результат:
+![image](https://github.com/ADNikulin/netology/assets/44374132/5134a7eb-e42a-4c00-994c-dd4d88ee732b)
+![image](https://github.com/ADNikulin/netology/assets/44374132/123b3c50-e72b-4040-8a3f-5590bdabf04e)
+
 
 ---
 ### Задание 3
