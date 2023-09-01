@@ -131,4 +131,122 @@
 - предоставьте скриншот браузера, отображающего сконфигурированный index.html в качестве сайта.
 
 ### Решение 3
+Подготовил папку на сервере, в ней запустил следующую команду: \
+```ansible-galaxy init apache``` \
+Получил роль: \
+![image](https://github.com/ADNikulin/netology/assets/44374132/a472e9fc-9c07-4ff4-9d1a-c04dd3950041) \
+Далее подготовил таски в роле: \
+```install.yaml``` 
+```yaml
+# Устанавливаем последнюю версию Apache
+- name: Install latest version of Apache
+  apt: 
+    name: apache2
+    update_cache: yes
+    state: latest
+```
+
+```service.yaml``` 
+```yaml
+# Стартуем сервис и добавляем в автозагрузку
+- name: Start apache webserver
+  service:
+    name: apache2
+    state: started
+    enabled: true
+```
+
+```port.yaml``` 
+```yaml
+---
+- name: wait for port 80 to become open
+  wait_for:
+    port: 80
+    delay: 10
+```
+
+```prepare_index_html.yaml``` 
+```yaml
+---
+# Подготавливаем файл индекс
+- name: add the index page
+  template:
+    src: "index.html.j2"
+    dest: "/var/www/html/index.html"
+    owner: root
+    group: root
+    mode: 0755
+```
+
+```check_connection.yaml``` 
+```yaml
+---
+- name: Check that you can connect (GET) to a page and it returns a status 200
+  ansible.builtin.uri:
+    url: "{{address}}"
+  vars:
+    address: "http://{{ ansible_facts.all_ipv4_addresses[0] }}"
+```
+
+Далее подготовил template:
+```index.html.j2``` 
+```j2
+<html>
+	<head>
+		<title>{{ ansible_facts['fqdn'] }}</title>
+	</head>
+	<body>
+		<h1>Hello to this Apache server!</h1>
+		<p>Let's see this machine parameters:</p>
+		<p>IP: {{ ansible_facts.all_ipv4_addresses[0] }}</p>
+		<p>CPU: {{ ansible_facts.processor }}</p>
+		<p>RAM_mb: {{ ansible_facts.memtotal_mb }}</p>
+		<p>vda1_size: {{ ansible_facts['devices']['vda']['partitions']['vda1']['size'] }}</p>
+	</body>
+</html>
+```
+
+Далее подготовил ```main.yaml``` в тасках
+
+```main.yaml``` 
+```yaml
+---
+# Задачи для данной роли
+  - import_tasks: install.yaml
+  - import_tasks: service.yaml
+  - import_tasks: port.yaml
+  - import_tasks: prepare_index_html.yaml
+  - import_tasks: check_connection.yaml
+```
+
+Плюс прописал отдельный ```inventory``` файл:
+
+```ini
+[apache]
+10.129.0.30 ansible_user=user
+10.129.0.4 ansible_user=user
+```
+
+Подготовил плейбук с ролью
+```apache-playbook.yaml```
+```yaml
+- name: Ansible Playbook to Install and Setup Apache
+  hosts: apache
+  become: yes
+  roles:
+    - apache
+```
+
+Какая-то такая структура: \
+![image](https://github.com/ADNikulin/netology/assets/44374132/62a253d9-ba81-4744-8c5f-2dcf378e9a49)
+
+
+Ну и запуск плейбука:
+```ansible-playbook -i inentory ./playbooks/apache-playbook.yaml```
+
+Результат запуска:
+![image](https://github.com/ADNikulin/netology/assets/44374132/07bd606e-95d5-42ee-903b-9e60406dd074) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/3ff184f4-a44e-4112-8bdc-877b98fc18dd) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/998c385c-d4ee-4827-8144-5577a2028d55) \
+
 ---
