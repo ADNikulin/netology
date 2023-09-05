@@ -60,7 +60,8 @@
 
 ### Решение 4
 
-![image](https://github.com/ADNikulin/netology/assets/44374132/c5d66138-5eaf-4995-bd2f-52f2141906b2)
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/71689490-dd1d-43f8-8849-9191392158ca) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/c5d66138-5eaf-4995-bd2f-52f2141906b2) \
 
 ---
 
