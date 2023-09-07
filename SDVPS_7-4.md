@@ -119,6 +119,9 @@ output "external_ip_address_vm_1" {
 
 ### Решение 1
 
+![image](https://github.com/ADNikulin/netology/assets/44374132/521437a3-4b83-4f85-a0bd-5c9907b82bd3)
+
+
 ---
 
 ## Дополнительные задания* (со звёздочкой)
