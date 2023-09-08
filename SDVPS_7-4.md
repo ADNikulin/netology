@@ -628,22 +628,58 @@ module "postgresql-server" {
 ![image](https://github.com/ADNikulin/netology/assets/44374132/f56ed9b4-3cdc-4501-ada7-01770a9f3ffc) \
 ![image](https://github.com/ADNikulin/netology/assets/44374132/3a1fd72e-70cc-4dc9-a452-640904816962) \
 ![image](https://github.com/ADNikulin/netology/assets/44374132/360be42e-c33b-4578-aacf-b34174f19200) \
-![image](https://github.com/ADNikulin/netology/assets/44374132/a042ba5b-837b-48b4-9edc-89f845be4d57) \
-![image](https://github.com/ADNikulin/netology/assets/44374132/1d7d874e-d1ea-4708-8373-361c7f2f9ddb) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/a88f8422-942e-4db3-8990-464215d2fcb1) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/0398fb38-3f17-4966-bac7-bb207072d75a) \
+
+> _небольшая ремарка_
+> Пришлось заново пересоздавать инфраструктуру, где потерялись внешние ip из первого задания. \ 
+> Но если не пересесоздавать, а делать apply при существующей, то он просто добавляет, то чего нет на данный момент в инфраструтктуре. \
 
 Дорабатываем файл inventory_yandex для ansible: \
 ```/infra/inventory_yandex.ini```
 ```ini
 [nginx]
-158.160.29.120 ansible_user=user
+62.84.121.153 ansible_user=user
 
 [db]
-158.160.27.87 ansible_user=user
+51.250.29.142 ansible_user=user
 
 ```
 
-Подготавливаем новый playbook:
+Подготавливаем новый playbook (_Не стал замарачиваться и нашел плейбук в инете_):
 
+```/playbooks/postgressql.playbook.yaml```
+```yaml
+# Install PostgreSQL on PostgreSQL-host
+- name: Install PostgreSQL
+  hosts: db
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Add pgdg repo to sources.list.d
+      lineinfile:
+        path: /etc/apt/sources.list.d/pgdg.list
+        line: "deb http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
+        create: true
+
+    - name: Download PostgreSQL key and add it to system keyring
+      apt_key:
+        url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+        state: present
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install PostgreSQL
+      apt:
+        name: postgresql
+        state: present
+```
+
+Запускаем: \
+![image](https://github.com/ADNikulin/netology/assets/44374132/cd87084c-37b3-438d-ac3e-a492f681dea2) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/743ed9df-39c8-4c10-af1f-2bf3c2be3877)
 
 
 --- 
