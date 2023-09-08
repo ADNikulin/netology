@@ -520,7 +520,7 @@ module "nginx-server" {
 > ![image](https://github.com/ADNikulin/netology/assets/44374132/d918f271-f979-46a5-8ad9-7e87187a7781) \
 > ![image](https://github.com/ADNikulin/netology/assets/44374132/082e9037-5c40-4b85-83bd-e0e2179146bc) \
 
-Инфраструктура подготовлена. Теперь с помощью Ansible накатить все остальное. \
+Инфраструктура подготовлена. Теперь с помощью Ansible накатываем все остальное. \
 Проект для ansible распологается в директории ```~/Projects/ansible/```
 ```/infra/inventory_yandex.ini```
 ```ini
