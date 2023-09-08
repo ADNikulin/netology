@@ -138,10 +138,10 @@ output "external_ip_address_vm_1" {
             ├── outputs.tf
             └── variables.tf
 ```
-> Где Live - это пространство (стенд, контур, среда). \
+> Где Live - это пространство фирмы, где должны распользогаться те или иные стенды (стенд, контур, среда и т.п.). \
 > В нем есть папка stage, которая имитирует вспроизводимую среду. \
-> Соответсвено modules это список модулей (объектов которые будем создовать), которые можно переиспользовать. \
-> В них есть подпапки которые имитируют создаваемые объекты.
+> Соответсвено modules это список модулей (объектов которые будем создавать), которые можно и нужно переиспользовать в разных стендах. \
+> В них есть подпапки которые имитируют создаваемые объекты (Сети, сервера, пк, кластеры ну и т.п.).
 
 ![image](https://github.com/ADNikulin/netology/assets/44374132/a4856b18-6899-4115-9fca-5700fa8ee484) \
 
@@ -240,7 +240,7 @@ resource "yandex_vpc_subnet" "subnet-a" {
 }
 ```
 
-Далее идет модуль servers. Сущность для создания серверов. В теории данную категорию можно расширить с заранее подготовленными исходными данными, т.е. ОС, ядра и т.п. и добавить больше категорий. Но думаю что для тестов и дз нам это не важно.
+Далее идет модуль servers. Сущность для создания серверов. В теории данную категорию можно расширить с заранее подготовленными исходными данными, т.е. ОС, ядра и т.п. и добавить больше категорий. Но думаю что для тестов и дз нам это не важно и хватит одного модуля сервера.
 
 ```/test/modules/servers/variables.tf```
 ```
@@ -456,7 +456,7 @@ subnet-name = "adn-subnet-network"
 v4_cidr_blocks = "192.168.10.0/24"
 ```
 
-```/test/live/stage/meta/user.meta.yaml``` Содержит информаицю о создоваемом пользователе на сервере
+```/test/live/stage/meta/user.meta.yaml``` Содержит информаицю о создаваемом пользователе на сервере
 ```yaml
 #cloud-config
 users:
@@ -510,8 +510,8 @@ module "nginx-server" {
 }
 ```
 
-> За счет модулей удобно понимать, что именно мы создаем в нашем окружение, а именно сеть и один сервер. \
-> Далее производим инициализацию, првоерку, планы и само создание: \
+> За счет модулей удобно понимать, что именно мы создаем в нашем окружение, а именно сеть и один сервер. И при необходимости их переиспользовать \
+> Далее производим инициализацию, проверку, планы и само создание: \
 > ![image](https://github.com/ADNikulin/netology/assets/44374132/bf61ce44-62c4-4ece-a7a7-9bdadd3e0593) \
 > ![image](https://github.com/ADNikulin/netology/assets/44374132/9617d5c6-3e9d-4703-86c2-6533a9ca45b1) \
 > ![image](https://github.com/ADNikulin/netology/assets/44374132/1909e430-2c26-4608-a928-9fcdfd62706f) \
@@ -568,6 +568,83 @@ module "nginx-server" {
 3. Выполнить проверку состояния запущенных служб через Ansible.
 
 ### Решение 2*
+
+Дорабатываем файл main.tf из прострнства stage
+
+```/test/live/stage/main.tf```
+``` 
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+
+  required_version = ">= 0.13"
+}
+
+provider "yandex" {
+  service_account_key_file = var.service_account_key_file
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
+  zone                     = var.zone
+}
+
+module "adn-networks" {
+  source                   = "./../../modules/networks"
+  zone                     = var.zone
+  network-name             = var.network-name
+  subnet-name              = var.subnet-name
+  v4_cidr_blocks           = var.v4_cidr_blocks
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
+  service_account_key_file = var.service_account_key_file
+}
+
+module "nginx-server" {
+  source                   = "./../../modules/servers"
+  core_fraction            = 20
+  server-app-name          = "nginx"
+  server-host-name         = "nginx"
+  servers_subnet_id        = module.adn-networks.subnet_id
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
+  service_account_key_file = var.service_account_key_file
+}
+
+module "postgresql-server" {
+  source                   = "./../../modules/servers"
+  core_fraction            = 20
+  server-app-name          = "postgresql"
+  server-host-name         = "postgresql"
+  servers_subnet_id        = module.adn-networks.subnet_id
+  cloud_id                 = var.cloud_id
+  folder_id                = var.folder_id
+  service_account_key_file = var.service_account_key_file
+}
+```
+Далее: \
+![image](https://github.com/ADNikulin/netology/assets/44374132/11196068-da87-406a-9dbd-c84bb3c6b9d9) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/f56ed9b4-3cdc-4501-ada7-01770a9f3ffc) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/3a1fd72e-70cc-4dc9-a452-640904816962) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/360be42e-c33b-4578-aacf-b34174f19200) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/a042ba5b-837b-48b4-9edc-89f845be4d57) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/1d7d874e-d1ea-4708-8373-361c7f2f9ddb) \
+
+Дорабатываем файл inventory_yandex для ansible: \
+```/infra/inventory_yandex.ini```
+```ini
+[nginx]
+158.160.29.120 ansible_user=user
+
+[db]
+158.160.27.87 ansible_user=user
+
+```
+
+Подготавливаем новый playbook:
+
+
 
 --- 
 ### Задание 3*
