@@ -695,7 +695,7 @@ module "postgresql-server" {
 4. Для того чтобы вам не нужно было каждый раз выполнять export - добавьте данную команду в самый конец файла ~/.bashrc
 
 ### Решение 3*
-> Настроил профайл
+> Настроил профайл \
 > ![image](https://github.com/ADNikulin/netology/assets/44374132/ad62997e-821e-4691-98e5-2c2d08fec3ed) \
 > ![image](https://github.com/ADNikulin/netology/assets/44374132/f76c407c-684c-42ac-bde7-76aa39e5f634) \
 > Удалил из провайдера все идентфикиаторы и прописал в переменные эти значения
