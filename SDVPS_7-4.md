@@ -629,7 +629,7 @@ module "postgresql-server" {
 ![image](https://github.com/ADNikulin/netology/assets/44374132/3a1fd72e-70cc-4dc9-a452-640904816962) \
 ![image](https://github.com/ADNikulin/netology/assets/44374132/360be42e-c33b-4578-aacf-b34174f19200) \
 ![image](https://github.com/ADNikulin/netology/assets/44374132/a88f8422-942e-4db3-8990-464215d2fcb1) \
-![image](https://github.com/ADNikulin/netology/assets/44374132/0398fb38-3f17-4966-bac7-bb207072d75a) \
+![image](https://github.com/ADNikulin/netology/assets/44374132/0398fb38-3f17-4966-bac7-bb207072d75a) 
 
 > _небольшая ремарка_
 > Пришлось заново пересоздавать инфраструктуру, где потерялись внешние ip из первого задания. \ 
@@ -693,6 +693,26 @@ module "postgresql-server" {
 4. Для того чтобы вам не нужно было каждый раз выполнять export - добавьте данную команду в самый конец файла ~/.bashrc
 
 ### Решение 3*
+> Настроил профайл
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/ad62997e-821e-4691-98e5-2c2d08fec3ed) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/f76c407c-684c-42ac-bde7-76aa39e5f634) \
+> Удалил из провайдера все идентфикиаторы и прописал в переменные эти значения
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/062eeb7f-24e3-495f-90bb-5b4c1e64fcce) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/85fb2d8c-1cde-441e-a5ff-408594acb682) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/d329df7a-ff9d-4489-9b89-d4de2e9978e0) \
+> Перед всеми тестами удалил инфраструктуру и запускаю заново: \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/02eaf692-da54-43d9-b92f-6c3ba5cf5e4e) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/18bfa6b1-09c2-4696-8e5b-b411333fbb46) \
+> ![image](https://github.com/ADNikulin/netology/assets/44374132/5be3e2f3-4517-4eb3-a17f-2230c1ce881e)
+
+
+
+
+
+
+
+
+
 ---
 
 Дополнительные материалы: 
