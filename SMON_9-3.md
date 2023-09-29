@@ -42,6 +42,7 @@
 
 <details>
   <summary>Решение</summary>
+ 
   - развернул пару новых серверов: \
     ![image](https://github.com/ADNikulin/netology/assets/44374132/1892dadd-1b85-4768-a718-97cfce9a9bf9)
   - накатил агенты на машины + добавил хосты \
