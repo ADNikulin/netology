@@ -72,19 +72,84 @@
 
 <details>
   <summary>Решение</summary>
-  
+
+  Второе задание решил сделать через ansibleб что бы расскатать сразу все настройки на пару серверов. \
+  Список серверов: \
+  ![image](https://github.com/ADNikulin/netology/assets/44374132/1691b0ff-baa0-4425-87dd-16fed53cce5c)
+
+  - **Подготовил плейбук с инфрой**
+    - inventory: \
+      ```ini
+      [client_zabbix]
+      158.160.77.153 ansible_user=user
+      84.201.162.178 ansible_user=user
+      ```
+    - playbook: \
+      ```yaml
+      ---
+      - name: Install zabbix on debian 11
+        hosts: client_zabbix
+        become: true
+        remote_user: user
+        vars:
+          zabix_agent_deb_url: https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-4+debian11_all.deb
+          zabix_server_url: "10.129.0.19"
+        tasks:
+          - name: wget zabbix repo
+            get_url:
+              url: "{{ zabix_agent_deb_url }}"
+              dest: /tmp/zabbix_agent.deb
+      
+          - name: install zabbix repo
+            apt: 
+              deb: /tmp/zabbix_agent.deb
+              state: present
+          
+          - name: update apt get and install zabbix agent 
+            apt: 
+              name: zabbix-agent
+              state: present
+              update_cache: yes
+      
+          - name: Stop service zabbix-agent
+            service:
+              name: zabbix-agent
+              state: stopped
+      
+          - name: Set to config file ip zabbix server 
+            shell: sed -i 's/Server=127.0.0.1/Server=127.0.0.1,{{ zabix_server_url }}/g' /etc/zabbix/zabbix_agentd.conf
+      
+          - name: Start service zabbix-agent
+            service: 
+              name: zabbix-agent
+              enabled: true
+              state: started
+      ```
+    - Проверяем корректность конфигов: \
+      ![image](https://github.com/ADNikulin/netology/assets/44374132/9dcc65fe-9c76-4ef5-8b73-10b88bcde08d)
+    - Проверяем запущен ли забикс агент: \
+      ![image](https://github.com/ADNikulin/netology/assets/44374132/c4659fec-f8ed-41cf-a62a-4dbb5f8b0948)
+  - **Настраиваем WEB часть**
+    - Configuration Host: \
+      ![image](https://github.com/ADNikulin/netology/assets/44374132/2b2b27cc-d42b-41f0-abc8-9bee11cfcf07)
+    - Latest data: \
+      ![image](https://github.com/ADNikulin/netology/assets/44374132/b0c3c1e3-4a66-4725-b752-c0064fde4735)
+    - Логи с машины: \
+      ![image](https://github.com/ADNikulin/netology/assets/44374132/da3abc40-181f-4df3-b6b7-7361b4cba49d)
+
 </details>
+
 ---
-## Задание 3 со звёздочкой*
+### Задание 3 со звёздочкой*
 Установите Zabbix Agent на Windows (компьютер) и подключите его к серверу Zabbix.
 
-#### Требования к результаты 
+## Требования к результаты 
 1. Приложите в файл README.md скриншот раздела Latest Data, где видно свободное место на диске C:
---- 
 
 ### Решение 3
 
 <details>
   <summary>Решение</summary>
-  
+
+  Подопотной машины с виндой нет) а гемороится с собственной машиной и пробросом портов без белого ip - желания нет) 
 </details>
