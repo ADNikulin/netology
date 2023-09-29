@@ -49,7 +49,7 @@
   ![image](https://github.com/ADNikulin/netology/assets/44374132/86fae1cb-d7de-4228-9444-bc34ed21dcd2)
   ![image](https://github.com/ADNikulin/netology/assets/44374132/a26b3fe8-9394-404a-a23b-ca9acf52b035)
 
-<.details>
+</details>
 
 ---
 ### Задание 2 
@@ -60,4 +60,4 @@
   <summary>Решение</summary>
   
   ![image](https://github.com/ADNikulin/netology/assets/44374132/7b34a5b1-38a3-45a8-94f7-bc93ca01142a)
-<.details>
+</details>
