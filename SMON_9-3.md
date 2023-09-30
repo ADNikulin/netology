@@ -94,6 +94,7 @@
 <details>
   <summary>Решение</summary>
 
+  Чутка название не то дал) 
   ![image](https://github.com/ADNikulin/netology/assets/44374132/6d93ad4a-31c1-45a8-86c6-73713fd06815)
 
 </details>
@@ -115,7 +116,7 @@
 <details>
   <summary>Решение</summary>
 
-  Подопотной машины с виндой нет) а гемороится с собственной машиной и пробросом портов без белого ip - желания нет) 
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/b3ba6704-f1ce-4f5b-83df-85550a9c1bc0)
 </details>
  ---
 
@@ -132,7 +133,11 @@
 <details>
   <summary>Решение</summary>
 
-  Подопотной машины с виндой нет) а гемороится с собственной машиной и пробросом портов без белого ip - желания нет) 
+  - Создал на одном клиенте скрипт и UserParameter
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/2073f5ae-7e0a-4b76-8304-3225d67fb8f8)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/6ec6adcf-32b4-46d4-846b-8739b01970dc)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/59d39111-4d2a-4daa-8113-181e32d8fdc1)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/362db611-293c-4e6a-b7e9-27e140e299ec)
 </details>
  ---
 
@@ -150,7 +155,31 @@
 <details>
   <summary>Решение</summary>
 
-  Подопотной машины с виндой нет) а гемороится с собственной машиной и пробросом портов без белого ip - желания нет) 
+  - код питона:
+    ```py
+    import sys
+    import os
+    import re
+    import datetime
+        
+    if (sys.argv[1] == '-ping'):
+     result=os.popen("ping -c 1 " + sys.argv[2]).read()
+     result=re.findall(r"time=(.*) ms", result)
+     print(result[0])
+    elif (sys.argv[1] == '-simple_print'):
+     print(sys.argv[2])
+    elif (sys.argv[1] == '1'):
+     print('nikulin alexander dmitrievich')
+    elif (sys.argv[1] == '2'):
+     current_time = datetime.datetime.now()
+     print(current_time)
+    else:
+     print(f"unknown input: {sys.argv[1]}")
+    ```
+  - обновил параметры на клиенте: \
+    ![image](https://github.com/ADNikulin/netology/assets/44374132/f5e80412-ccd5-4d0e-9bb6-7ebfecac51d3)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/7810a0ed-d7e1-4c6e-9cb8-cbcecbaa0f5a)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/98e4feb7-8830-4a47-9745-d34797550d33)
 </details>
  ---
 
@@ -166,7 +195,10 @@
 <details>
   <summary>Решение</summary>
 
-  Подопотной машины с виндой нет) а гемороится с собственной машиной и пробросом портов без белого ip - желания нет) 
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/ea4380b4-392d-48f7-a1d4-a4f8d8390cdc)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/9e7b4f64-f9f8-4d11-8cda-da778d849113)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/1d6be791-0206-4953-87af-19ce488a5d8f)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/d9183844-b161-421d-8f82-c1a89445139a)
 </details>
  ---
 
@@ -181,5 +213,114 @@
 <details>
   <summary>Решение</summary>
 
-  Подопотной машины с виндой нет) а гемороится с собственной машиной и пробросом портов без белого ip - желания нет) 
+  - использовал ансибл:
+  - inventory \
+    ```ini
+    [client_zabbix]
+    158.160.77.153 ansible_user=user
+    84.201.162.178 ansible_user=user
+    51.250.102.170 ansible_user=user
+    51.250.101.151 ansible_user=user
+    ```
+  - templates: \
+   - user_parameters.conf.j2 \
+     ```
+     UserParameter=custom_py_text[*],python3 /etc/zabbix/zabbix_agentd.d/test_python_script.py -simple_print $1
+     UserParameter=custom_py_fio[*],python3 /etc/zabbix/zabbix_agentd.d/test_python_script.py 1
+     UserParameter=custom_py_date[*],python3 /etc/zabbix/zabbix_agentd.d/test_python_script.py 2
+     UserParameter=custom_py_all[*],python3 /etc/zabbix/zabbix_agentd.d/test_python_script.py $1 $2
+     ```
+   - test_python_script.py.j2 \
+     ```
+     import sys
+     import os
+     import re
+     import datetime
+     
+     if (sys.argv[1] == '-ping'):
+      result=os.popen("ping -c 1 " + sys.argv[2]).read()
+      result=re.findall(r"time=(.*) ms", result)
+      print(result[0])
+     elif (sys.argv[1] == '-simple_print'):
+      print(sys.argv[2])
+     elif (sys.argv[1] == '1'):
+      print('nikulin alexander dmitrievich')
+     elif (sys.argv[1] == '2'):
+      current_time = datetime.datetime.now()
+      print(current_time)
+     else:
+      print(f"unknown input: {sys.argv[1]}")
+     ```
+   - fio.sh.j2 \
+     ```
+     #!/bin/bash
+
+    if [ $1 -eq "1" ]
+    then
+    	echo "alexander nikulin dmitrievich"
+    elif [ $1 -eq "2" ]
+    then
+    	current=`date +%Y%m%d%H%M%S`
+    	echo $current
+    else
+    	echo "incorrect params"
+    fi
+     ```
+  - zabbix_aggent.yaml \
+    ```yaml
+    ---
+    - name: Install zabbix on debian 11
+      hosts: client_zabbix
+      become: true
+      remote_user: user
+      vars:
+        zabix_agent_deb_url: https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-4+debian11_all.deb
+        zabix_server_url: "10.129.0.19"
+      tasks:
+        - name: wget zabbix repo
+          get_url:
+            url: "{{ zabix_agent_deb_url }}"
+            dest: /tmp/zabbix_agent.deb
+    
+        - name: install zabbix repo
+          apt: 
+            deb: /tmp/zabbix_agent.deb
+            state: present
+        
+        - name: update apt get and install zabbix agent 
+          apt: 
+            name: zabbix-agent
+            state: present
+            update_cache: yes
+    
+        - name: Stop service zabbix-agent
+          service:
+            name: zabbix-agent
+            state: stopped
+    
+        - name: Set to config file ip zabbix server 
+          shell: sed -i 's/Server=127.0.0.1/Server=127.0.0.1,{{ zabix_server_url }}/g' /etc/zabbix/zabbix_agentd.conf
+          
+        - name: Create user parameters conf
+          template:
+            src: "../templates/user_parameters.conf.j2"
+            dest: "/etc/zabbix/zabbix_agentd.d/user_parameters.conf"
+    
+        - name: Create scripts py
+          template:
+            src: "../templates/test_python_script.py.j2"
+            dest: "/etc/zabbix/zabbix_agentd.d/test_python_script.py"
+    
+        - name: Create scripts bash
+          template:
+            src: "../templates/fio.sh.j2"
+            dest: "/etc/zabbix/zabbix_agentd.d/fio.sh"
+    
+        - name: Start service zabbix-agent
+          service: 
+            name: zabbix-agent
+            enabled: true
+            state: started
+            
+    ```
 </details>
