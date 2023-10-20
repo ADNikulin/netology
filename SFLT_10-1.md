@@ -24,7 +24,7 @@
   - ![image](https://github.com/ADNikulin/netology/assets/44374132/c3e2b714-5151-4c20-93db-aa089dc7b30b)
   - ![image](https://github.com/ADNikulin/netology/assets/44374132/7b5a157f-6b73-4ea8-8400-1fd01c9d1a7f)
   - ![image](https://github.com/ADNikulin/netology/assets/44374132/c0eb7759-ddc8-46ea-b291-4e0f531a4eae)
-  - pkt file
+  - pkt [file](https://github.com/ADNikulin/netology/blob/master/SFLT_src/SFLT_10-1.pkt)
 
 
 </details>
