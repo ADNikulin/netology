@@ -39,6 +39,22 @@
 - Настройте Keepalived так, чтобы он запускал данный скрипт каждые 3 секунды и переносил виртуальный IP на другой сервер, если bash-скрипт завершался с кодом, отличным от нуля (то есть порт веб-сервера был недоступен или отсутствовал index.html). Используйте для этого секцию vrrp_script
 - На проверку отправьте получившейся bash-скрипт и конфигурационный файл keepalived, а также скриншот с демонстрацией переезда плавающего ip на другой сервер в случае недоступности порта или файла index.html
 
+### Решение 2
+
+<details>
+  <summary>Решение 1</summary>
+
+  - Настроил две виртуалки, установил nginx, keepalived на обе машины
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/679fb085-f8dd-4839-86a7-07477506fa9a)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/a287debb-00d9-4ca0-bc12-64bfbc02ca0e)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/daed3fb3-6d1d-44be-8f1a-2936c7c1a37f)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/d24ed291-2fa2-4481-8907-dcc5da7e10bf)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/597e5221-3e3b-45ae-8aa8-cad97e3cb4f3)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/207d62d6-4231-41b1-bffb-3959c98befcf)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/81ef99cb-65cf-45cb-835a-a148d3c4049e)
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/c3055e25-4aeb-4244-89e7-92d689b39762)
+
+</details>
 
 ------
 
