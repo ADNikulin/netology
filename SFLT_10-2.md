@@ -37,9 +37,9 @@
   	mode	http
   	option	httplog
   	option	dontlognull
-          timeout connect 5000
-          timeout client  50000
-          timeout server  50000
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
   	errorfile 400 /etc/haproxy/errors/400.http
   	errorfile 403 /etc/haproxy/errors/403.http
   	errorfile 408 /etc/haproxy/errors/408.http
@@ -49,12 +49,12 @@
   	errorfile 504 /etc/haproxy/errors/504.http
   
   listen stats  # веб-страница со статистикой
-          bind                    :888
-          mode                    http
-          stats                   enable
-          stats uri               /stats
-          stats refresh           5s
-          stats realm             Haproxy\ Statistics
+    bind                    :888
+    mode                    http
+    stats                   enable
+    stats uri               /stats
+    stats refresh           5s
+    stats realm             Haproxy\ Statistics
   
   listen web_tcp
   	bind :8088
