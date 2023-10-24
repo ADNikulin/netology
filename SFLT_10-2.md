@@ -173,6 +173,7 @@
     	server s1 127.0.0.1:8888 check inter 3s
     	server s2 127.0.0.1:9999 check inter 3s
     ```
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/6417e963-9b75-43a2-9816-78f4d32b05e2)
   - ![image](https://github.com/ADNikulin/netology/assets/44374132/08f3a093-2bd0-444f-981a-ff8ad6d85174)
 
 </details>
@@ -185,19 +186,41 @@
 - Настройте два бэкенда HAProxy
 - Настройте фронтенд HAProxy так, чтобы в зависимости от запрашиваемого сайта example1.local или example2.local запросы перенаправлялись на разные бэкенды HAProxy
 - На проверку направьте конфигурационный файл HAProxy, скриншоты, демонстрирующие запросы к разным фронтендам и ответам от разных бэкендов.
+  
+### Решение 4*
+<details>
+  <summary>Решение 4</summary>
 
+  - `/etc/haproxy/haproxy.cfg`
+    ```
+    frontend example  # секция фронтенд
+        mode http
+        bind :8080
 
-------
+        # for example1.local
+		    acl ACL_example1.com hdr(host) -i example1.local
+		    use_backend web_servers if ACL_example1.com
 
-### Правила приема работы
+        # for example1.local
+        acl ACL_example2.com hdr(host) -i example2.local
+        use_backend web_servers2 if ACL_example2.com
 
-1. Необходимо следовать инструкции по выполнению домашнего задания, используя для оформления репозиторий Github
-2. В ответе необходимо прикладывать требуемые материалы - скриншоты, конфигурационные файлы, скрипты. Необходимые материалы для получения зачета указаны в каждом задании.
+    backend web_servers    # секция бэкенд
+        mode http
+        balance roundrobin
+        option httpchk
+        http-check send meth GET uri /index.html
+        server s1 127.0.0.1:6666 check
+        server s2 127.0.0.1:7777 check
+    
+    backend web_servers2    # секция бэкенд2
+        mode http
+        balance roundrobin
+        option httpchk
+        http-check send meth GET uri /index.html
+        server s1 127.0.0.1:8888 check
+        server s2 127.0.0.1:9999 check
+    ```
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/9295c002-8e79-4db2-a7fe-7e789dfad689)
 
-
-------
-
-### Критерии оценки
-
-- Зачет - выполнены все задания, ответы даны в развернутой форме, приложены требуемые скриншоты, конфигурационные файлы, скрипты. В выполненных заданиях нет противоречий и нарушения логики
-- На доработку - задание выполнено частично или не выполнено, в логике выполнения заданий есть противоречия, существенные недостатки, приложены не все требуемые материалы.
+</details>
