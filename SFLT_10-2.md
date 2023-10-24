@@ -145,6 +145,37 @@
 - Настройте Nginx так, чтобы файлы .jpg выдавались самим Nginx (предварительно разместите несколько тестовых картинок в директории /var/www/), а остальные запросы переадресовывались на HAProxy, который в свою очередь переадресовывал их на два Simple Python server.
 - На проверку направьте конфигурационные файлы nginx, HAProxy, скриншоты с запросами jpg картинок и других файлов на Simple Python Server, демонстрирующие корректную настройку.
 
+### Решение 3
+<details>
+  <summary>Решение  3</summary>
+
+  - `/etc/nginx/sites-enabled/example-http.conf`
+    ```
+    server {
+       listen	8080;   
+       access_log	/var/log/nginx/example-http.com-acess.log;
+       error_log	/var/log/nginx/example-http.com-error.log;
+    
+       location ~* \.(jpg|jpeg)$ {
+    		root /var/www/html/img;
+       }
+    
+       location / {
+    		proxy_pass	http://127.0.0.1:8325;
+       }
+    }
+    ```
+  - `/etc/haproxy/haproxy.cfg`
+    ```
+    listen web_tcp
+    	bind :8325
+    	balance roundrobin
+    	server s1 127.0.0.1:8888 check inter 3s
+    	server s2 127.0.0.1:9999 check inter 3s
+    ```
+  - ![image](https://github.com/ADNikulin/netology/assets/44374132/08f3a093-2bd0-444f-981a-ff8ad6d85174)
+
+</details>
 ---
 
 ### Задание 4*
