@@ -208,7 +208,7 @@
     }
     
     resource "yandex_resourcemanager_folder_iam_member" "editor" {
-      folder_id = "****"
+      folder_id = "b1grctf7tvhjcshed89i"
       role      = "editor"
       member   = "serviceAccount:${yandex_iam_service_account.ig-sa.id}"
       depends_on = [
@@ -218,7 +218,7 @@
     
     resource "yandex_compute_instance_group" "ig-1" {
       name               = "fixed-ig-with-balancer"
-      folder_id = "******"
+      folder_id = "b1grctf7tvhjcshed89i"
       service_account_id = "${yandex_iam_service_account.ig-sa.id}"
       depends_on          = [yandex_resourcemanager_folder_iam_member.editor]
       instance_template {
