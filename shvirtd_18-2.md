@@ -56,21 +56,7 @@
 ```
 docker version && docker compose version
 ```
-
-<details>
-  <summary>Раскрыть решение</summary>
-
-  - Копируем
-    ```sh
-    wget https://app.vagrantup.com/bento/boxes/ubuntu-20.04/versions/202404.23.0/providers/virtualbox/amd64/vagrant.box
-    ```
-  - МОнтируем:
-    ```sh
-    vagrant box add bento/ubuntu-20.04 file:/home/user/vagr/vagrant.box --provider=virtualbox --force
-    ```
-</details>
-
-3. Если Vagrant выдаёт ошибку (блокировка трафика):
+4. Если Vagrant выдаёт ошибку (блокировка трафика):
 ```
 URL: ["https://vagrantcloud.com/bento/ubuntu-20.04"]     
 Error: The requested URL returned error: 404:
@@ -89,6 +75,19 @@ Error: The requested URL returned error: 404:
  Попробуйте в этом случае выполнить в Windows от администратора команду `bcdedit /set hypervisorlaunchtype off` и перезагрузиться.
 
 - Если ваша рабочая станция в меру различных факторов не может запустить вложенную виртуализацию - допускается неполное выполнение(до ошибки запуска ВМ)
+
+<details>
+  <summary>Раскрыть решение</summary>
+
+  - Копируем
+    ```sh
+    wget https://app.vagrantup.com/bento/boxes/ubuntu-20.04/versions/202404.23.0/providers/virtualbox/amd64/vagrant.box
+    ```
+  - МОнтируем:
+    ```sh
+    vagrant box add bento/ubuntu-20.04 file:/home/user/vagr/vagrant.box --provider=virtualbox --force
+    ```
+</details>
 
 ## Задача 3
 
