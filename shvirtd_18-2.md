@@ -18,7 +18,7 @@
 - [Packer](https://github.com/netology-code/devops-materials/blob/master/README.md) версии 1.9.х + плагин от Яндекс Облако по [инструкции](https://cloud.yandex.ru/docs/tutorials/infrastructure-management/packer-quickstart)
 - [уandex cloud cli](https://cloud.yandex.com/ru/docs/cli/quickstart) Так же инициализируйте профиль с помощью ```yc init``` .
 
-<deatils>
+<details>
   <summary>Раскрыть решение</summary>
 
   - ```sh
@@ -43,6 +43,7 @@
   - Далее делаем ```yc init``` вспомнив свой **oauth token** на яндексе или получив его.
   - Настраиваем прфоиль и создаем подсети
   - ну и т.д.
+    
 </details>
 
 Примечание: Облачная ВМ с Linux в данной задаче не подойдёт из-за ограничений облачного провайдера. У вас просто не установится virtualbox.
@@ -56,7 +57,7 @@
 docker version && docker compose version
 ```
 
-<deatils>
+<details>
   <summary>Раскрыть решение</summary>
 
   - Копируем
