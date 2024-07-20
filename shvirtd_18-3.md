@@ -225,5 +225,34 @@
 
 <details>
   <summary>Решение</summary>
-  
+
+  1.
+     * ![image](https://github.com/user-attachments/assets/56e71670-2072-4544-bc17-6194c2e1d9d9)
+     * ![image](https://github.com/user-attachments/assets/6d2d1090-57b5-4415-8535-b64cddb0a7bc)
+       > По приоритету будет обработан сначала **compose** а дальше **docker-compose** (если первого нет). \
+       > ![image](https://github.com/user-attachments/assets/102484fa-e65c-4993-9a44-c782f7ad3225)
+  2. ![image](https://github.com/user-attachments/assets/2f4c0baa-abe5-47bf-abe7-fcff2aebf52e)
+  3. port to aka local
+     * ![image](https://github.com/user-attachments/assets/cea60374-ed41-438d-b4e3-cf71f47b7e0c)
+     * ![image](https://github.com/user-attachments/assets/265bc079-160c-47fe-a774-8b6e2e456857)
+  4. configure portainer:
+     * ![image](https://github.com/user-attachments/assets/2138875a-4d08-48b4-b6a7-9a21bcf4e0e6)
+     * ![image](https://github.com/user-attachments/assets/74512a57-c428-4541-8a2a-381191928e5f)
+     * ![image](https://github.com/user-attachments/assets/6ba03366-38fe-4f8f-84b2-5dbb5f993b16)
+  5. configure mystack by web
+     * ![image](https://github.com/user-attachments/assets/b39c1889-33cd-4513-ba8c-eee34ccffb50)
+     * ![image](https://github.com/user-attachments/assets/3d3861cd-ad07-4458-afc1-f0ea81a84a4b)
+     * ![image](https://github.com/user-attachments/assets/dc2929a8-4e03-404a-a0fc-8477b6bab2fa)
+  6. config my stack
+     * ![image](https://github.com/user-attachments/assets/2a7633f6-cf7a-4f13-8f5d-0bb50cdca5bc)
+     * ![image](https://github.com/user-attachments/assets/b18ad170-90e9-4ab6-a523-cf8e8ba7c817)
+  7. delete manifest
+     * ![image](https://github.com/user-attachments/assets/7def19cf-c08a-4d41-baaf-5b0ca6cd9a75)
+     * ![image](https://github.com/user-attachments/assets/2ecbc098-c41e-4acd-a406-b0bd57a4a34a)
+     * Несколько предупреждений:
+       1. Предупреждение, что параметр версия использовать уже не нужно. 
+       2. предупреждение, что найдены контейнеры, которые не описаны в файле. для очистки их выполнить с флагом --remove-orphans
+     * ![image](https://github.com/user-attachments/assets/2df15325-79ed-44dd-84d6-fe0be4640543)
+     * ![image](https://github.com/user-attachments/assets/46ac50aa-4ba8-4f61-9637-d2915b55f92d)
+
 </details>
