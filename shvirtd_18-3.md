@@ -34,21 +34,21 @@
      ```sh
      #!/bin/bash
 
-    # Add Docker's official GPG key:
-    sudo apt-get update &&
-    sudo apt-get install ca-certificates curl gnupg -y &&
-    sudo install -m 0755 -d /etc/apt/keyrings &&
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg &&
-    sudo chmod a+r /etc/apt/keyrings/docker.gpg &&
-    
-    # Add the repository to Apt sources:
-    echo \
-      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null &&
-    sudo apt-get update &&
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &&
-    sudo docker run hello-world
+     # Add Docker's official GPG key:
+     sudo apt-get update &&
+     sudo apt-get install ca-certificates curl gnupg -y &&
+     sudo install -m 0755 -d /etc/apt/keyrings &&
+     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg &&
+     sudo chmod a+r /etc/apt/keyrings/docker.gpg &&
+      
+     # Add the repository to Apt sources:
+     echo \
+       "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+       $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null &&
+     sudo apt-get update &&
+     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin &&
+     sudo docker run hello-world
      ```
   3. Подготовил докер файл и index.html \
      ![image](https://github.com/user-attachments/assets/2eecb576-029f-41d4-bb82-6a70a3c77fad) \
