@@ -78,7 +78,19 @@
 
 <details>
   <summary>Решение</summary>
-  
+
+  1. ```bash
+     docker run -d -p 8080:80 --name adnikulin-custom-nginx-t2 ejick007/custom-nginx:1.0.0
+     ```
+  2. ![image](https://github.com/user-attachments/assets/19d6f09b-59a6-48cb-a4ba-be8792d1412b)
+  3. ```bash
+     docker rename adnikulin-custom-nginx-t2 custom-nginx-t2
+     ```
+     ![image](https://github.com/user-attachments/assets/13cffaad-a430-4bdb-a310-89412e257b2a)
+  4. ![image](https://github.com/user-attachments/assets/b9f827a1-63ae-4abb-8c73-06329b855ea9)
+  5. ![image](https://github.com/user-attachments/assets/11e30271-c393-4a7d-914b-70aec7348cd1) \
+  6. ![image](https://github.com/user-attachments/assets/2544f9a3-7083-46de-a44c-771b8b1a37ec)
+
 </details>
 
 ## Задача 3
@@ -103,6 +115,34 @@
 
 <details>
   <summary>Решение</summary>
+
+  1. ```bash
+     docker attach custom-nginx-t2
+     ```
+  2. ![image](https://github.com/user-attachments/assets/ea59a00a-19df-46f9-afc6-529fe6d82de9)
+  3. Так как мы подключили поток ввода/вывода к контейнеру, то и логично, что мы передали туда сигнал со стопом. На скрине ниже поулчил логи, где видно что пришел данный сигнал и был выполнен выход. \
+     ![image](https://github.com/user-attachments/assets/c23a3de4-c472-46fe-9ccf-1afd7c3ecd91)
+  4. ```bash
+     docker start custom-nginx-t2
+     ```
+     ![image](https://github.com/user-attachments/assets/08f31eb9-4b43-4675-b51c-50cb4464b82f)
+  5. ```bash
+     docker exec -it custom-nginx-t2 bash
+     ```
+     ![image](https://github.com/user-attachments/assets/257a46ce-a5f1-4544-8b8b-33f0158087b6)
+    
+  6. Установили типо нано: \
+     ![image](https://github.com/user-attachments/assets/a4165217-cca3-4d82-9202-892c9e3e3c1a)
+  8. Заменили порты: \
+     ![image](https://github.com/user-attachments/assets/e6bb5878-76e0-4ea6-9126-8172c4af69fc)
+  9. Выходим из контейнера и проверяем, что произошло с портами во вне: \
+     ![image](https://github.com/user-attachments/assets/dc9cfa5c-9a8d-4bb6-b459-dc2fdba9f5b2) \
+     > При запуске контейнера мы четко указали на какой порт будем прокидывать запросы. При это внутри мы поменяли порт, и уже прослушиваем 81 вместо 80.
+  10. по 11 пункту не понял смысла его вообще... 
+  11. Удаляем запущенный контейнер ``` docker container rm $(docker kill custom-nginx-t2)``` \
+      ![image](https://github.com/user-attachments/assets/a79673b6-71ab-4214-b6a2-7bb47d6aff32)
+
+
   
 </details>
 
@@ -123,7 +163,12 @@
 
 <details>
   <summary>Решение</summary>
-  
+
+  1. ![image](https://github.com/user-attachments/assets/904ed822-27fb-47cd-bb83-163dfc7da19b)
+    > чуть подправил запуск, что бы не дох пр изапуске
+  2. ![image](https://github.com/user-attachments/assets/a64b4c78-2a74-47ed-aeff-378116c3dec4)
+  3. ![image](https://github.com/user-attachments/assets/7098f96b-aed9-42bf-bb24-b2b946adc080)
+
 </details>
 
 ## Задача 5
