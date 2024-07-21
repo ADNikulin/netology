@@ -226,3 +226,65 @@
     ```
     
 </details>
+
+## Задача 5 *
+<details>
+  <summary>Условия</summary>
+  
+  1. Напишите и задеплойте на вашу облачную ВМ bash скрипт, который произведет резервное копирование БД mysql в директорию "/opt/backup" с помощью запуска в сети "backend" контейнера из образа ```schnitzler/mysqldump``` при помощи ```docker run ...``` команды. Подсказка: "документация образа."
+  2. Протестируйте ручной запуск
+  3. Настройте выполнение скрипта раз в 1 минуту через cron, crontab или systemctl timer. Придумайте способ не светить логин/пароль в git!!
+  4. Предоставьте скрипт, cron-task и скриншот с несколькими резервными копиями в "/opt/backup"
+
+</details>
+  
+<details>
+  <summary>Решение</summary>
+
+  За основу взят: https://hub.docker.com/r/schnitzler/mysqldump/#!
+
+  Разовый скрипт копирования
+  ```
+  docker run \
+    --rm --entrypoint "" \
+    -v `pwd`/opt/backup:/backup \
+    --link="shvirtd_18-4-db-1" \
+    --net shvirtd_18-4_backend \
+    schnitzler/mysqldump \
+    mysqldump --opt -h db -u root -pYtReWq4321 "--result-file=/backup/dumps.sql" database
+  ```
+
+  Отдельный компоуз файл:
+  ```
+  services:
+    cron:
+      image: schnitzler/mysqldump
+      restart: always
+      volumes:
+        - ./bin/crontab:/var/spool/cron/crontabs/root
+        - ./bin/backup:/usr/local/bin/backup
+      volumes_from:
+        - backup
+      env_file:
+        - .env
+      command: ["-l", "8", "-d", "8"]
+      environment:
+        MYSQL_HOST: db
+        MYSQL_USER: root
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_DATABASE: test_db
+      networks:
+        backend:
+          ipv4_address: 172.20.0.3
+    backup:
+      image: busybox
+      volumes:
+        - /opt/backup:/backup
+  ```
+
+  Со структурой папок: 
+  * ![image](https://github.com/user-attachments/assets/62b31cdb-9d5f-48e7-a575-4069da86b11f)
+  * ![image](https://github.com/user-attachments/assets/ba1ebf16-fcae-4c4d-8526-b316de4da576)
+  * ![image](https://github.com/user-attachments/assets/1e4e8f83-a704-44a2-b0c1-64ced1074e3d)
+      
+</details>
