@@ -56,18 +56,21 @@
 
 ## Необязательная часть
 
-1. При помощи `ansible-vault` расшифруйте все зашифрованные файлы с переменными.
-   > ![image](https://github.com/user-attachments/assets/95b079a3-d1b9-4a05-a9ee-14e24caab200)
-2. Зашифруйте отдельное значение `PaSSw0rd` для переменной `some_fact` паролем `netology`. Добавьте полученное значение в `group_vars/all/exmp.yml`.
-   >![image](https://github.com/user-attachments/assets/48115679-0b94-4660-b208-ef2ee47ef20b)
-3. Запустите `playbook`, убедитесь, что для нужных хостов применился новый `fact`.
-   > ![image](https://github.com/user-attachments/assets/e6f4d6f8-0a3b-441f-9a34-383b6bf70614)
-4. Добавьте новую группу хостов `fedora`, самостоятельно придумайте для неё переменную. В качестве образа можно использовать [этот вариант](https://hub.docker.com/r/pycontribs/fedora).
-   > ![image](https://github.com/user-attachments/assets/730b5c45-a3da-48d9-a888-b18be27f639d) \
-   > ![image](https://github.com/user-attachments/assets/eecf10d7-975f-472c-a0d1-b43c727c2f87) \
-   > ![image](https://github.com/user-attachments/assets/35e6d2dc-09df-4b3b-90ff-ae1a2a03d64f) \
-5. Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.
-6. Все изменения должны быть зафиксированы и отправлены в ваш личный репозиторий.
+<details>
+  <summary>Детали</summary>
+  1. При помощи `ansible-vault` расшифруйте все зашифрованные файлы с переменными.
+     > ![image](https://github.com/user-attachments/assets/95b079a3-d1b9-4a05-a9ee-14e24caab200)
+  2. Зашифруйте отдельное значение `PaSSw0rd` для переменной `some_fact` паролем `netology`. Добавьте полученное значение в `group_vars/all/exmp.yml`.
+     >![image](https://github.com/user-attachments/assets/48115679-0b94-4660-b208-ef2ee47ef20b)
+  3. Запустите `playbook`, убедитесь, что для нужных хостов применился новый `fact`.
+     > ![image](https://github.com/user-attachments/assets/e6f4d6f8-0a3b-441f-9a34-383b6bf70614)
+  4. Добавьте новую группу хостов `fedora`, самостоятельно придумайте для неё переменную. В качестве образа можно использовать [этот вариант](https://hub.docker.com/r/pycontribs/fedora).
+     > ![image](https://github.com/user-attachments/assets/730b5c45-a3da-48d9-a888-b18be27f639d) \
+     > ![image](https://github.com/user-attachments/assets/eecf10d7-975f-472c-a0d1-b43c727c2f87) \
+     > ![image](https://github.com/user-attachments/assets/35e6d2dc-09df-4b3b-90ff-ae1a2a03d64f) \
+  5. Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.
+  6. Все изменения должны быть зафиксированы и отправлены в ваш личный репозиторий.
    > ready
-
+	
+</details>
 ---
