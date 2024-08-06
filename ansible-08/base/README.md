@@ -58,6 +58,7 @@
 
 <details>
   <summary>Детали</summary>
+	
   1. При помощи `ansible-vault` расшифруйте все зашифрованные файлы с переменными.
      > ![image](https://github.com/user-attachments/assets/95b079a3-d1b9-4a05-a9ee-14e24caab200)
   2. Зашифруйте отдельное значение `PaSSw0rd` для переменной `some_fact` паролем `netology`. Добавьте полученное значение в `group_vars/all/exmp.yml`.
