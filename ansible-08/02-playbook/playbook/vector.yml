@@ -1,0 +1,69 @@
+- name: Install Vector
+  hosts: clickhouse
+  vars_files:
+    - ./group_vars/vars.yml
+
+  handlers:
+    - name: Start vector service
+      become: true
+      ansible.builtin.service:
+        name: vector
+        state: restarted
+        enabled: yes
+        
+  tasks:
+  - name: install nano
+    become: true
+    ansible.builtin.yum:
+      name:
+        - nano
+
+  - name: VECTOR - Add user vector
+    user:
+      name: vector
+
+  - name: VECTOR - Create Directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: vector
+      group: vector
+      mode: 0755
+    loop:
+      - '/vector/'
+      - '/var/lib/vector'
+      - '/etc/vector'
+
+  - name: VECTOR - Get vector distrib
+    become: true
+    ansible.builtin.get_url:
+      url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-x86_64-unknown-linux-musl.tar.gz"
+      dest: "/vector/vector-{{ clickhouse_version }}.tar.gz"
+
+  - name: VECTOR -Unpack vector
+    become: true
+    unarchive:
+      src: "/vector/vector-{{ clickhouse_version }}.tar.gz"
+      dest: "/vector/"
+      remote_src: yes
+
+  - name: VECTOR - copy start file vector
+    become: true
+    copy:
+      src: "/vector/vector-x86_64-unknown-linux-musl/bin/vector"
+      dest: "/usr/bin/vector"
+      remote_src: yes
+
+  - name: VECTOR - copy file service vector
+    become: true
+    copy:
+      src: "/vector/vector-x86_64-unknown-linux-musl/etc/systemd/vector.service"
+      dest: "/etc/systemd/system"
+      remote_src: yes
+
+  - name: VECTOR - create config file from template
+    become: true
+    template:
+      src: "templates/vector.yml.j2"
+      dest: "/etc/vector/vector.yml"
+    notify: Start vector service

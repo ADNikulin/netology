@@ -1,8 +1,10 @@
 ---
 - name: Install Clickhouse
   hosts: clickhouse
+  vars_files:
+    - ./group_vars/vars.yml
   handlers:
-    - name: CLICKHOUSE - Start clickhouse service
+    - name: Start-clickhouse-service
       become: true
       ansible.builtin.service:
         name: clickhouse-server
@@ -19,19 +21,27 @@
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
-    - name: Install clickhouse packages
+
+    - name: CLICKHOUSE - Install clickhouse packages
       become: true
       ansible.builtin.yum:
         name:
           - clickhouse-common-static-{{ clickhouse_version }}.rpm
           - clickhouse-client-{{ clickhouse_version }}.rpm
           - clickhouse-server-{{ clickhouse_version }}.rpm
-      notify: Start clickhouse service
+      notify: Start-clickhouse-service
 
     - name: CLICKHOUSE - Flush handlers
       meta: flush_handlers
 
+    - name: Start-clickhouse-service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+
     - name: CLICKHOUSE - Create database
+      become: true
       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
       register: create_db
       failed_when: create_db.rc != 0 and create_db.rc !=82
@@ -39,8 +49,11 @@
       
 - name: Install Vector
   hosts: clickhouse
+  vars_files:
+    - ./group_vars/vars.yml
+
   handlers:
-    - name: VECTOR - Start vector service
+    - name: Start vector service
       become: true
       ansible.builtin.service:
         name: vector
@@ -48,6 +61,12 @@
         enabled: yes
         
   tasks:
+  - name: install nano
+    become: true
+    ansible.builtin.yum:
+      name:
+        - nano
+
   - name: VECTOR - Add user vector
     user:
       name: vector
@@ -65,29 +84,34 @@
       - '/etc/vector'
 
   - name: VECTOR - Get vector distrib
+    become: true
     ansible.builtin.get_url:
       url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-x86_64-unknown-linux-musl.tar.gz"
       dest: "/vector/vector-{{ clickhouse_version }}.tar.gz"
 
   - name: VECTOR -Unpack vector
+    become: true
     unarchive:
       src: "/vector/vector-{{ clickhouse_version }}.tar.gz"
       dest: "/vector/"
       remote_src: yes
 
   - name: VECTOR - copy start file vector
+    become: true
     copy:
       src: "/vector/vector-x86_64-unknown-linux-musl/bin/vector"
       dest: "/usr/bin/vector"
       remote_src: yes
 
   - name: VECTOR - copy file service vector
+    become: true
     copy:
       src: "/vector/vector-x86_64-unknown-linux-musl/etc/systemd/vector.service"
       dest: "/etc/systemd/system"
       remote_src: yes
 
   - name: VECTOR - create config file from template
+    become: true
     template:
       src: "templates/vector.yml.j2"
       dest: "/etc/vector/vector.yml"
