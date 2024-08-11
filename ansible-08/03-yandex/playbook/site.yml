@@ -1,8 +1,6 @@
 ---
-- name: Install nginx
+- name: PLAY - Install nginx
   hosts: lighthouse
-  vars_files:
-    - ./group_vars/vars.yml
   handlers:
     - name: start-nginx
       become: true
@@ -25,13 +23,13 @@
         state: present
     - name: NGINX | Create general config
       become: true
-      template:
+      ansible.builtin.template:
         src: templates/nginx.conf.j2
-        dst: /etc/nginx/nginx.conf
+        dest: /etc/nginx/nginx.conf
         mode: 0644
       notify: reload-nginx
 
-- name: Install LightHouse
+- name: PLAY - Install LightHouse
   hosts: lighthouse
   vars_files:
     - ./group_vars/lighthouse/vars.yml
@@ -60,7 +58,7 @@
         mode: 0644
       notify: reload-nginx
 
-- name: Install Clickhouse
+- name: PLAY - Install Clickhouse
   hosts: clickhouse
   tags: clickhouse
   vars_files:
@@ -96,6 +94,7 @@
 
     - name: CLICKHOUSE | Flush handlers
       ansible.builtin.meta: flush_handlers
+      notify: start-clickhouse-service
 
     # - name: Start-clickhouse-service
     #   become: true
@@ -116,7 +115,7 @@
   vars_files:
     - ./group_vars/vector/vars.yml
   handlers:
-    - name: VECTOR | Restart vector service
+    - name: restart-vector-service
       become: true
       ansible.builtin.service:
         name: vector
@@ -138,15 +137,16 @@
         path: "{{ vector_conf_dir }}"
         state: directory
         mode: 0644
-    - name: VECTOR |  apply vector template
+    - name: VECTOR | apply vector template
       become: true
       ansible.builtin.template:
         src: "templates/vector.j2"
         dest: "{{ vector_conf_dir }}/vector.yml"
         mode: "0644"
-      notify: Restart vector service
+      notify: restart-vector-service
     - name: Flush handlers
       ansible.legacy.meta: flush_handlers
+      notify: restart-vector-service
     - name: VECTOR | Create systemd
       become: true
       ansible.builtin.template:
