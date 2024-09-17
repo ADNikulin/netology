@@ -100,6 +100,8 @@
    - автоматом предлагает создать новый, на основе старого
 
 3. Если всё отработалось в рамках ожидания — выгрузите схемы workflow для импорта в XML. Файлы с workflow и скриншоты workflow приложите к решению задания.
+  - [bugs work flow](<BUG Workflow.xml>)
+  - [common work flow](<common workflow.xml>)
 
 ---
 
