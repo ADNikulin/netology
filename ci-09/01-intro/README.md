@@ -11,7 +11,7 @@
   3. Создать доски Kanban и Scrum.
   4. [Дополнительные инструкции от разработчика Jira](https://support.atlassian.com/jira-cloud-administration/docs/import-and-export-issue-workflows/).
 
-<details>
+</details>
 
 ## Основная часть
 
