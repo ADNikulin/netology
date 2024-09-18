@@ -4,7 +4,6 @@
   roles:
     - clickhouse
 
-    
 - name: Install Vector
   hosts: vector
   roles:
