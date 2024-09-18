@@ -57,8 +57,8 @@
   11. В ответе дайте ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
      - ![alt text](imgs/image96.png)
 
-  > ansible-vector-role - https://github.com/ADNikulin/ansible-vector-role/
-  > ansible-light-house-role - https://github.com/ADNikulin/ansible-lighthouse-role
-  > result-playbook - https://github.com/ADNikulin/netology/tree/master/ansible-08/04-role
+  > ansible-vector-role - https://github.com/ADNikulin/ansible-vector-role/ \
+  > ansible-light-house-role - https://github.com/ADNikulin/ansible-lighthouse-role \
+  > result-playbook - https://github.com/ADNikulin/netology/tree/master/ansible-08/04-role \
 </details>
 ---
