@@ -47,13 +47,18 @@
   7. Повторите шаги 3–6 для LightHouse. Помните, что одна роль должна настраивать один продукт.
      - https://github.com/ADNikulin/ansible-lighthouse-role
   8. Выложите все roles в репозитории. Проставьте теги, используя семантическую нумерацию. Добавьте roles в `requirements.yml` в playbook.
-     - https://github.com/ADNikulin/ansible-vector-role/releases/tag/1.0.0
-     - https://github.com/ADNikulin/ansible-lighthouse-role/releases/tag/1.0.0
+     - https://github.com/ADNikulin/ansible-vector-role/releases/tag/1.0.4
+     - https://github.com/ADNikulin/ansible-lighthouse-role/releases/tag/1.0.3
      - ![alt text](imgs/image97.png)
   9. Переработайте playbook на использование roles. Не забудьте про зависимости LightHouse и возможности совмещения `roles` с `tasks`.
-     - 
+     - ![alt text](imgs/image95.png)
   10. Выложите playbook в репозиторий.
+     - https://github.com/ADNikulin/netology/tree/master/ansible-08/04-role
   11. В ответе дайте ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
-  
+     - ![alt text](imgs/image96.png)
+
+  > ansible-vector-role - https://github.com/ADNikulin/ansible-vector-role/
+  > ansible-light-house-role - https://github.com/ADNikulin/ansible-lighthouse-role
+  > result-playbook - https://github.com/ADNikulin/netology/tree/master/ansible-08/04-role
 </details>
 ---

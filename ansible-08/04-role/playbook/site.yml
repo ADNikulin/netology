@@ -10,7 +10,6 @@
     - vector
 
 - name: Install lighthouse
-  # hosts: click-srv
   hosts: lighthouse
   roles:
     - lighthouse
