@@ -37,11 +37,14 @@
      user@ansible3:/home/user/ansible-clickhouse/$
      ```
   2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.
+    <details>
+      <summary>Детали</summary>
      - ```
-     user@ansible3:~/Ansible_8.4/playbook/roles/roles_vector$ molecule init scenario --driver-name docker
-     INFO     Initializing new scenario default...
-     INFO     Initialized scenario in /home/user/Ansible_8.4/playbook/roles/roles_vector/molecule/default successfully.message String ) ENGINE = MergeTree() ORDER BY tuple()'"
+       user@ansible3:~/Ansible_8.4/playbook/roles/roles_vector$ molecule init scenario --driver-name docker
+       INFO     Initializing new scenario default...
+       INFO     Initialized scenario in /home/user/Ansible_8.4/playbook/roles/roles_vector/molecule/default successfully.message String ) ENGINE = MergeTree() ORDER BY tuple()'"
        ```
+      </details>
   3. Добавьте несколько разных дистрибутивов (oraclelinux:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.
   4. Добавьте несколько assert в verify.yml-файл для  проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.). 
      - ```
