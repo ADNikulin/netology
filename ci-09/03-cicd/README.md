@@ -93,17 +93,24 @@
 
   1. Скачайте дистрибутив с [maven](https://maven.apache.org/download.cgi).
   2. Разархивируйте, сделайте так, чтобы binary был доступен через вызов в shell (или поменяйте переменную PATH, или любой другой, удобный вам способ).
+      - ![alt text](imgs/image75.png)
   3. Удалите из `apache-maven-<version>/conf/settings.xml` упоминание о правиле, отвергающем HTTP- соединение — раздел mirrors —> id: my-repository-http-unblocker.
+      - не нашел такой строки
   4. Проверьте `mvn --version`.
+      - ![alt text](imgs/image75.png)
   5. Заберите директорию [mvn](./mvn) с pom.
+      - ![alt text](imgs/image74.png)
 
   ### Основная часть
 
   1. Поменяйте в `pom.xml` блок с зависимостями под ваш артефакт из первого пункта задания для Nexus (java с версией 8_282).
+      - ![alt text](imgs/image73.png)
   2. Запустите команду `mvn package` в директории с `pom.xml`, ожидайте успешного окончания.
+      - ![alt text](imgs/image72.png)
   3. Проверьте директорию `~/.m2/repository/`, найдите ваш артефакт.
+      - ![alt text](imgs/image71.png)
   4. В ответе пришлите исправленный файл `pom.xml`.
-
+      - [text](mvn/pom.xml)
 </details>
 
 ---
