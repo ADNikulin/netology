@@ -7,14 +7,22 @@
   <summary>Детали</summary>
 
   1. Создайте два VM в Yandex Cloud с параметрами: 2CPU 4RAM Centos7 (остальное по минимальным требованиям).
-      - 
+      - ![alt text](imgs/image100.png)
   2. Пропишите в [inventory](./infrastructure/inventory/cicd/hosts.yml) [playbook](./infrastructure/site.yml) созданные хосты.
+      - ![alt text](imgs/image99.png)
   3. Добавьте в [files](./infrastructure/files/) файл со своим публичным ключом (id_rsa.pub). Если ключ называется иначе — найдите таску в плейбуке, которая использует id_rsa.pub имя, и исправьте на своё.
+      - ![alt text](imgs/image97.png)
   4. Запустите playbook, ожидайте успешного завершения.
+      - пришлось править так же реcentosBase repo на vault и накатывать 12й постгрю
+      - ![alt text](imgs/image96.png)
   5. Проверьте готовность SonarQube через [браузер](http://localhost:9000).
+      - ![alt text](imgs/image94.png)
   6. Зайдите под admin\admin, поменяйте пароль на свой.
+      - ![alt text](imgs/image95.png)
   7.  Проверьте готовность Nexus через [бразуер](http://localhost:8081).
+      - ![alt text](imgs/image93.png)
   8. Подключитесь под admin\admin123, поменяйте пароль, сохраните анонимный доступ.
+      - ![alt text](imgs/image92.png)
 
 </details>
 
