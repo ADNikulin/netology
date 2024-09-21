@@ -34,9 +34,14 @@
   <summary>Детали</summary>
 
   1. Создайте новый проект, название произвольное.
+      - ![alt text](imgs/image91.png)
   2. Скачайте пакет sonar-scanner, который вам предлагает скачать SonarQube.
+      - ![alt text](imgs/image90.png)
+      - ![alt text](imgs/image89.png)
   3. Сделайте так, чтобы binary был доступен через вызов в shell (или поменяйте переменную PATH, или любой другой, удобный вам способ).
+      - ![alt text](imgs/image88.png)
   4. Проверьте `sonar-scanner --version`.
+      - ![alt text](imgs/image88.png)
   5. Запустите анализатор против кода из директории [example](./example) с дополнительным ключом `-Dsonar.coverage.exclusions=fail.py`.
   6. Посмотрите результат в интерфейсе.
   7. Исправьте ошибки, которые он выявил, включая warnings.
