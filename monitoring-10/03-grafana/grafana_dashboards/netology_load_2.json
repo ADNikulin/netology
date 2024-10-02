@@ -1,0 +1,470 @@
+{
+	"annotations": {
+		"list": [
+			{
+				"builtIn": 1,
+				"datasource": {
+					"type": "grafana",
+					"uid": "-- Grafana --"
+				},
+				"enable": true,
+				"hide": true,
+				"iconColor": "rgba(0, 211, 255, 1)",
+				"name": "Annotations & Alerts",
+				"type": "dashboard"
+			}
+		]
+	},
+	"editable": true,
+	"fiscalYearStartMonth": 0,
+	"graphTooltip": 0,
+	"id": 1,
+	"links": [],
+	"panels": [
+		{
+			"datasource": {
+				"default": true,
+				"type": "prometheus",
+				"uid": "fdzok1457uhoga"
+			},
+			"fieldConfig": {
+				"defaults": {
+					"color": {
+						"mode": "palette-classic"
+					},
+					"custom": {
+						"axisBorderShow": true,
+						"axisCenteredZero": false,
+						"axisColorMode": "series",
+						"axisLabel": "",
+						"axisPlacement": "auto",
+						"barAlignment": 0,
+						"barWidthFactor": 0.6,
+						"drawStyle": "line",
+						"fillOpacity": 34,
+						"gradientMode": "opacity",
+						"hideFrom": {
+							"legend": false,
+							"tooltip": false,
+							"viz": false
+						},
+						"insertNulls": false,
+						"lineInterpolation": "linear",
+						"lineWidth": 1,
+						"pointSize": 5,
+						"scaleDistribution": {
+							"type": "linear"
+						},
+						"showPoints": "auto",
+						"spanNulls": false,
+						"stacking": {
+							"group": "A",
+							"mode": "none"
+						},
+						"thresholdsStyle": {
+							"mode": "line"
+						}
+					},
+					"displayName": "Available Gi",
+					"mappings": [],
+					"max": 20,
+					"min": 0,
+					"thresholds": {
+						"mode": "absolute",
+						"steps": [
+							{
+								"color": "green"
+							},
+							{
+								"color": "red",
+								"value": 10
+							}
+						]
+					},
+					"unit": "decgbytes"
+				},
+				"overrides": []
+			},
+			"gridPos": {
+				"h": 8,
+				"w": 12,
+				"x": 0,
+				"y": 0
+			},
+			"id": 4,
+			"options": {
+				"legend": {
+					"calcs": [],
+					"displayMode": "list",
+					"placement": "bottom",
+					"showLegend": true
+				},
+				"tooltip": {
+					"mode": "single",
+					"sort": "none"
+				}
+			},
+			"pluginVersion": "11.2.0",
+			"targets": [
+				{
+					"datasource": {
+						"type": "prometheus",
+						"uid": "fdzok1457uhoga"
+					},
+					"disableTextWrap": false,
+					"editorMode": "code",
+					"expr": "node_filesystem_free_bytes{job=\"node\", instance=\"node-exporter:9100\"} / 1024 / 1024 / 1024",
+					"fullMetaSearch": false,
+					"includeNullMetadata": true,
+					"instant": false,
+					"legendFormat": "__auto",
+					"range": true,
+					"refId": "A",
+					"useBackend": false
+				}
+			],
+			"title": "Disk Free Space",
+			"type": "timeseries"
+		},
+		{
+			"datasource": {
+				"default": true,
+				"type": "prometheus",
+				"uid": "fdzok1457uhoga"
+			},
+			"fieldConfig": {
+				"defaults": {
+					"color": {
+						"mode": "palette-classic"
+					},
+					"custom": {
+						"axisBorderShow": false,
+						"axisCenteredZero": false,
+						"axisColorMode": "text",
+						"axisLabel": "",
+						"axisPlacement": "auto",
+						"barAlignment": 0,
+						"barWidthFactor": 0.6,
+						"drawStyle": "line",
+						"fillOpacity": 16,
+						"gradientMode": "hue",
+						"hideFrom": {
+							"legend": false,
+							"tooltip": false,
+							"viz": false
+						},
+						"insertNulls": false,
+						"lineInterpolation": "smooth",
+						"lineWidth": 1,
+						"pointSize": 5,
+						"scaleDistribution": {
+							"type": "linear"
+						},
+						"showPoints": "auto",
+						"spanNulls": false,
+						"stacking": {
+							"group": "A",
+							"mode": "none"
+						},
+						"thresholdsStyle": {
+							"mode": "line"
+						}
+					},
+					"mappings": [],
+					"thresholds": {
+						"mode": "absolute",
+						"steps": [
+							{
+								"color": "green"
+							},
+							{
+								"color": "red",
+								"value": 0.1
+							}
+						]
+					}
+				},
+				"overrides": []
+			},
+			"gridPos": {
+				"h": 8,
+				"w": 12,
+				"x": 12,
+				"y": 0
+			},
+			"id": 1,
+			"options": {
+				"legend": {
+					"calcs": [],
+					"displayMode": "list",
+					"placement": "bottom",
+					"showLegend": true
+				},
+				"tooltip": {
+					"mode": "single",
+					"sort": "none"
+				}
+			},
+			"targets": [
+				{
+					"datasource": {
+						"type": "prometheus",
+						"uid": "fdzok1457uhoga"
+					},
+					"editorMode": "code",
+					"expr": "100 * (rate(node_cpu_seconds_total{mode=\"system\"}[1m]))",
+					"instant": false,
+					"legendFormat": "__auto",
+					"range": true,
+					"refId": "A"
+				}
+			],
+			"title": "CPU",
+			"type": "timeseries"
+		},
+		{
+			"datasource": {
+				"default": true,
+				"type": "prometheus",
+				"uid": "fdzok1457uhoga"
+			},
+			"fieldConfig": {
+				"defaults": {
+					"color": {
+						"mode": "palette-classic"
+					},
+					"custom": {
+						"axisBorderShow": false,
+						"axisCenteredZero": false,
+						"axisColorMode": "text",
+						"axisLabel": "",
+						"axisPlacement": "auto",
+						"barAlignment": 0,
+						"barWidthFactor": 0.6,
+						"drawStyle": "line",
+						"fillOpacity": 41,
+						"gradientMode": "opacity",
+						"hideFrom": {
+							"legend": false,
+							"tooltip": false,
+							"viz": false
+						},
+						"insertNulls": false,
+						"lineInterpolation": "smooth",
+						"lineWidth": 1,
+						"pointSize": 5,
+						"scaleDistribution": {
+							"type": "linear"
+						},
+						"showPoints": "auto",
+						"spanNulls": false,
+						"stacking": {
+							"group": "A",
+							"mode": "none"
+						},
+						"thresholdsStyle": {
+							"mode": "line"
+						}
+					},
+					"mappings": [],
+					"max": 200,
+					"min": 0,
+					"thresholds": {
+						"mode": "absolute",
+						"steps": [
+							{
+								"color": "green"
+							},
+							{
+								"color": "red",
+								"value": 100
+							}
+						]
+					},
+					"unit": "decmbytes"
+				},
+				"overrides": []
+			},
+			"gridPos": {
+				"h": 8,
+				"w": 12,
+				"x": 0,
+				"y": 8
+			},
+			"id": 3,
+			"options": {
+				"legend": {
+					"calcs": [],
+					"displayMode": "list",
+					"placement": "bottom",
+					"showLegend": true
+				},
+				"tooltip": {
+					"mode": "single",
+					"sort": "none"
+				}
+			},
+			"targets": [
+				{
+					"datasource": {
+						"type": "prometheus",
+						"uid": "fdzok1457uhoga"
+					},
+					"disableTextWrap": false,
+					"editorMode": "code",
+					"expr": "node_memory_MemFree_bytes{job=\"node\", instance=\"node-exporter:9100\"} / 1024 / 1024",
+					"fullMetaSearch": false,
+					"includeNullMetadata": true,
+					"instant": false,
+					"legendFormat": "__auto",
+					"range": true,
+					"refId": "A",
+					"useBackend": false
+				}
+			],
+			"title": "Free Memory",
+			"type": "timeseries"
+		},
+		{
+			"datasource": {
+				"default": true,
+				"type": "prometheus",
+				"uid": "fdzok1457uhoga"
+			},
+			"fieldConfig": {
+				"defaults": {
+					"color": {
+						"mode": "palette-classic"
+					},
+					"custom": {
+						"axisBorderShow": false,
+						"axisCenteredZero": false,
+						"axisColorMode": "text",
+						"axisLabel": "",
+						"axisPlacement": "auto",
+						"barAlignment": 0,
+						"barWidthFactor": 0.6,
+						"drawStyle": "line",
+						"fillOpacity": 46,
+						"gradientMode": "hue",
+						"hideFrom": {
+							"legend": false,
+							"tooltip": false,
+							"viz": false
+						},
+						"insertNulls": false,
+						"lineInterpolation": "smooth",
+						"lineWidth": 1,
+						"pointSize": 5,
+						"scaleDistribution": {
+							"type": "linear"
+						},
+						"showPoints": "auto",
+						"spanNulls": false,
+						"stacking": {
+							"group": "A",
+							"mode": "none"
+						},
+						"thresholdsStyle": {
+							"mode": "line"
+						}
+					},
+					"mappings": [],
+					"thresholds": {
+						"mode": "absolute",
+						"steps": [
+							{
+								"color": "green"
+							},
+							{
+								"color": "red",
+								"value": 0.1
+							}
+						]
+					}
+				},
+				"overrides": []
+			},
+			"gridPos": {
+				"h": 8,
+				"w": 12,
+				"x": 12,
+				"y": 8
+			},
+			"id": 2,
+			"options": {
+				"legend": {
+					"calcs": [],
+					"displayMode": "list",
+					"placement": "bottom",
+					"showLegend": true
+				},
+				"tooltip": {
+					"mode": "single",
+					"sort": "none"
+				}
+			},
+			"targets": [
+				{
+					"datasource": {
+						"type": "prometheus",
+						"uid": "fdzok1457uhoga"
+					},
+					"disableTextWrap": false,
+					"editorMode": "code",
+					"expr": "node_load1{job=\"node\", instance=\"node-exporter:9100\"}",
+					"fullMetaSearch": false,
+					"includeNullMetadata": true,
+					"instant": false,
+					"legendFormat": "__auto",
+					"range": true,
+					"refId": "A",
+					"useBackend": false
+				},
+				{
+					"datasource": {
+						"type": "prometheus",
+						"uid": "fdzok1457uhoga"
+					},
+					"editorMode": "code",
+					"expr": "node_load5{job=\"node\", instance=\"node-exporter:9100\"}",
+					"hide": false,
+					"instant": false,
+					"legendFormat": "__auto",
+					"range": true,
+					"refId": "B"
+				},
+				{
+					"datasource": {
+						"type": "prometheus",
+						"uid": "fdzok1457uhoga"
+					},
+					"editorMode": "code",
+					"expr": "node_load15{job=\"node\", instance=\"node-exporter:9100\"}",
+					"hide": false,
+					"instant": false,
+					"legendFormat": "__auto",
+					"range": true,
+					"refId": "C"
+				}
+			],
+			"title": "CPULA 1/5/15;",
+			"type": "timeseries"
+		}
+	],
+	"schemaVersion": 39,
+	"tags": [],
+	"templating": {
+		"list": []
+	},
+	"time": {
+		"from": "now-30m",
+		"to": "now"
+	},
+	"timepicker": {},
+	"timezone": "browser",
+	"title": "netology_solution_2",
+	"uid": "bdzokqfeobocga",
+	"version": 9,
+	"weekStart": ""
+}

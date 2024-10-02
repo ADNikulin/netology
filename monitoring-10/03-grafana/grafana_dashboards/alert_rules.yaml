@@ -1,0 +1,410 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: base
+      folder: base
+      interval: 5m
+      rules:
+        - uid: ddzonysoyt81sd
+          title: Memory basic
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: fdzok1457uhoga
+              model:
+                datasource:
+                    type: prometheus
+                    uid: fdzok1457uhoga
+                disableTextWrap: false
+                editorMode: code
+                expr: node_memory_MemFree_bytes{job="node", instance="node-exporter:9100"
+} / 1024 / 1024
+                fullMetaSearch: false
+                includeNullMetadata: true
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: true
+                refId: A
+                useBackend: false
+            - refId: B
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              relativeTimeRange:
+                from: 21600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 100
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: bdzokqfeobocga
+          panelId: 3
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          annotations:
+            __dashboardUid__: bdzokqfeobocga
+            __panelId__: "3"
+            description: Мало места, смотри что не так
+            summary: free space is low
+          labels: {}
+          isPaused: false
+          notification_settings:
+            receiver: grafana-default-email
+        - uid: ddzood471fqbka
+          title: Disk Free Space
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 1800
+                to: 0
+              datasourceUid: fdzok1457uhoga
+              model:
+                datasource:
+                    type: prometheus
+                    uid: fdzok1457uhoga
+                disableTextWrap: false
+                editorMode: code
+                expr: node_filesystem_free_bytes{job="node", instance="node-exporter:9100"
+} / 1024 / 1024 / 1024
+                fullMetaSearch: false
+                includeNullMetadata: true
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: true
+                refId: A
+                useBackend: false
+            - refId: B
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 10
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: bdzokqfeobocga
+          panelId: 4
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          annotations:
+            __dashboardUid__: bdzokqfeobocga
+            __panelId__: "4"
+            summary: Места на диске меньше 10 гигов
+          labels: {}
+          isPaused: false
+          notification_settings:
+            receiver: grafana-default-email
+        - uid: cdzoogrsgv2tca
+          title: CPU
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 1800
+                to: 0
+              datasourceUid: fdzok1457uhoga
+              model:
+                datasource:
+                    type: prometheus
+                    uid: fdzok1457uhoga
+                editorMode: code
+                expr: 100 * (rate(node_cpu_seconds_total{mode="system"
+}[
+	1m
+]))
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: true
+                refId: A
+            - refId: B
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0.1
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: bdzokqfeobocga
+          panelId: 1
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          annotations:
+            __dashboardUid__: bdzokqfeobocga
+            __panelId__: "1"
+            summary: процессор призадумался
+          labels: {}
+          isPaused: false
+          notification_settings:
+            receiver: grafana-default-email
+        - uid: cdzoot4jp0l4wf
+          title: CPULA 1/5/15;
+          condition: E
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 1800
+                to: 0
+              datasourceUid: fdzok1457uhoga
+              model:
+                datasource:
+                    type: prometheus
+                    uid: fdzok1457uhoga
+                disableTextWrap: false
+                editorMode: code
+                expr: node_load1{job="node", instance="node-exporter:9100"
+}
+                fullMetaSearch: false
+                includeNullMetadata: true
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: true
+                refId: A
+                useBackend: false
+            - refId: B
+              relativeTimeRange:
+                from: 1800
+                to: 0
+              datasourceUid: fdzok1457uhoga
+              model:
+                datasource:
+                    type: prometheus
+                    uid: fdzok1457uhoga
+                editorMode: code
+                expr: node_load5{job="node", instance="node-exporter:9100"
+}
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: true
+                refId: B
+            - refId: C
+              relativeTimeRange:
+                from: 1800
+                to: 0
+              datasourceUid: fdzok1457uhoga
+              model:
+                datasource:
+                    type: prometheus
+                    uid: fdzok1457uhoga
+                editorMode: code
+                expr: node_load15{job="node", instance="node-exporter:9100"
+}
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: true
+                refId: C
+            - refId: D
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - D
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: D
+                type: reduce
+            - refId: E
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0.1
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - E
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: D
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: E
+                type: threshold
+          dashboardUid: bdzokqfeobocga
+          panelId: 2
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          annotations:
+            __dashboardUid__: bdzokqfeobocga
+            __panelId__: "2"
+            summary: Проц призадумался
+          labels: {}
+          isPaused: false
+          notification_settings:
+            receiver: grafana-default-email
