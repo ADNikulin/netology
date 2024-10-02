@@ -34,6 +34,9 @@
   1. Подключите поднятый вами prometheus, как источник данных.
   1. Решение домашнего задания — скриншот веб-интерфейса grafana со списком подключенных Datasource.
 
+  > ![alt text](imgs/image99.png)/
+  > ![alt text](imgs/image100.png)
+
 </details>
 
 ## Задание 2
