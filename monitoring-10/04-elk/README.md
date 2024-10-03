@@ -49,9 +49,14 @@
   Результатом выполнения задания должны быть:
 
   - скриншот `docker ps` через 5 минут после старта всех контейнеров (их должно быть 5);
+    > ![alt text](imgs/image97.png)
   - скриншот интерфейса kibana;
+    > ![alt text](imgs/image100.png)\
+    > ![alt text](imgs/image99.png) \
+    > ![alt text](imgs/image98.png)
   - docker-compose манифест (если вы не использовали директорию help);
   - ваши yml-конфигурации для стека (если вы не использовали директорию help).
+
 </details>
 
 ## Задание 2
@@ -61,10 +66,27 @@
 
   Перейдите в меню [создания index-patterns  в kibana](http://localhost:5601/app/management/kibana/indexPatterns/create) и создайте несколько index-patterns из имеющихся.
 
+  > ![alt text](imgs/image96.png)\
+  > ![alt text](imgs/image95.png)
+
   Перейдите в меню просмотра логов в kibana (Discover) и самостоятельно изучите, как отображаются логи и как производить поиск по логам.
+
+  > ![alt text](imgs/image94.png)
 
   В манифесте директории help также приведенно dummy-приложение, которое генерирует рандомные события в stdout-контейнера.
   Эти логи должны порождать индекс logstash-* в elasticsearch. Если этого индекса нет — воспользуйтесь советами и источниками из раздела «Дополнительные ссылки» этого задания.
+
+  > что генерирует приложение: \
+  > ![alt text](imgs/image91.png) \
+  > Далее слегка поигрался с разным отображениями, параметрами, графиками.
+  > ![alt text](imgs/image90.png) \
+  > ![alt text](imgs/image89.png) \
+  > ![alt text](imgs/image88.png) \
+  > ![alt text](imgs/image87.png) \
+  > ![alt text](imgs/image86.png) \
+  > ![alt text](imgs/image85.png) \
+  > ![alt text](imgs/image84.png) \
+  > ![alt text](imgs/image83.png) \ 
 
 </details>
 ---
