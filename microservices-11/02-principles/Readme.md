@@ -158,6 +158,19 @@
 
 <details>
   <summary>Решение</summary>
+
+  Пришлось слегка потенцивать с бубнами, что бы завести выше указанный стек:
+  - Поднял виртуалку: 
+  - ![alt text](img/image100.png)
+  - Чутка переделал docker compose: [text](11-microservices-02-principles/docker-compose.yaml)
+  - Исправил: [text](11-microservices-02-principles/security/requirements.txt)
+  - Набросал кофинг для nginx: [text](11-microservices-02-principles/gateway/nginx.conf)
+  - запустил всё: 
+  - ![alt text](img/image99.png)
+  - прверяю: 
+  - ![alt text](img/image98.png)
+  - ![alt text](img/image97.png)
+  - ![alt text](img/image96.png)
 </details>
 ---
 
