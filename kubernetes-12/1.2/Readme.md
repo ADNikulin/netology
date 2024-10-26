@@ -44,14 +44,17 @@
 
 ### Задание 2. Создать Service и подключить его к Pod
 
-1. Создать Pod с именем netology-web.
-    > ![alt text](imgs/image90.png)
-2. Использовать image — gcr.io/kubernetes-e2e-test-images/echoserver:2.2.
-    > ![alt text](imgs/image90.png)
-3. Создать Service с именем netology-svc и подключить к netology-web.
-    > ![alt text](imgs/image89.png)
-4. Подключиться локально к Service с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
-    > ![alt text](imgs/image88.png) \
-    > ![alt text](imgs/image87.png)
+<details>
+  <summary>Детали</summary>
 
+  1. Создать Pod с именем netology-web.
+      > ![alt text](imgs/image90.png)
+  2. Использовать image — gcr.io/kubernetes-e2e-test-images/echoserver:2.2.
+      > ![alt text](imgs/image90.png)
+  3. Создать Service с именем netology-svc и подключить к netology-web.
+      > ![alt text](imgs/image89.png)
+  4. Подключиться локально к Service с помощью `kubectl port-forward` и вывести значение (curl или в браузере).
+      > ![alt text](imgs/image88.png) \
+      > ![alt text](imgs/image87.png)
+</details>
 ------
