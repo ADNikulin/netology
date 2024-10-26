@@ -16,6 +16,7 @@
   <summary>Результат</summary>
 
   > ![alt text](imgs/image100.png) \
+  > ![alt text](imgs/image95.png)
 </details>
 
 ------
