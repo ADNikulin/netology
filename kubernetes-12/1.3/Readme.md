@@ -67,7 +67,8 @@
       >         - containerPort: 11443
       >           name: https-port
       > ```
-      > РАзвернул в кубере: ![alt text](images/image100.png)\
+      > Развернул в кубере:\ 
+      > ![alt text](images/image100.png)\
       > ![alt text](images/image99.png)\
       > ![alt text](images/image98.png)
   2. После запуска увеличить количество реплик работающего приложения до 2.
@@ -99,7 +100,7 @@
       > ```
       > ![alt text](images/image95.png)
   5. Создать отдельный Pod с приложением multitool и убедиться с помощью `curl`, что из пода есть доступ до приложений из п.1.
-      > [pod](multitool.pod.yaml) \
+      > [pod](multitool.pod.yaml)
       > ```
       > apiVersion: v1
       > kind: Pod
