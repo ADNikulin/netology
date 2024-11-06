@@ -67,7 +67,7 @@
       >         - containerPort: 11443
       >           name: https-port
       > ```
-      > Развернул в кубере:\ 
+      > Развернул в кубере: \ 
       > ![alt text](images/image100.png)\
       > ![alt text](images/image99.png)\
       > ![alt text](images/image98.png)
