@@ -44,7 +44,8 @@
   4. Продемонстрировать доступ с помощью `curl` по доменному имени сервиса.
       > ![alt text](images/image87.png) \
       > ![alt text](images/image88.png) \
-      > ![alt text](images/image89.png)
+      > ![alt text](images/image86.png) \
+      > ![alt text](images/image85.png)
   5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
       > Ход выполнения задания представлен выше
 </details>
