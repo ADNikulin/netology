@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-volumes-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app-volumes
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-volumes
+    spec:
+      containers:
+        - name: busybox
+          image: busybox:latest
+          command:
+            [
+              "sh",
+              "-c",
+              'mkdir -p /out/logs && while true; do echo "$(date) - Test message" >> /out/logs/success.txt; sleep 5; done',
+            ]
+          volumeMounts:
+            - name: log-volume
+              mountPath: /out/logs
+        - name: multitool
+          image: wbitt/network-multitool:latest
+          command: ["sh", "-c", "tail -f /out/logs/success.txt"]
+          volumeMounts:
+            - name: log-volume
+              mountPath: /out/logs
+      volumes:
+        - name: log-volume
+          persistentVolumeClaim:
+            claimName: pvc-vol
