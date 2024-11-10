@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-apps
+  labels:
+    tier: control
+    app: log-apps
+spec:
+  selector:
+    matchLabels:
+      tier: control
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        tier: control
+    spec:
+      containers:
+        - name: multitool
+          image: wbitt/network-multitool:latest
+          command: ['sh', '-c', 'tail -f /logs/success.txt']
+          volumeMounts:
+            - name: log-volume
+              mountPath: /logs
+          ports:
+            - containerPort: 8080
+          env: 
+            - name: HTTP_PORT
+              value: "1180"
+        - name: busybox
+          image: busybox:latest
+          command: ['sh', '-c', 'mkdir -p /logs && while true; do echo "$(date) - Test message" >> /logs/success.txt; sleep 5; done']
+          volumeMounts:
+            - name: log-volume
+              mountPath: /logs
+      volumes:
+        - name: log-volume
+          emptyDir: {}
