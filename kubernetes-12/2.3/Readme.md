@@ -69,13 +69,11 @@
   3. Выпустить самоподписной сертификат SSL. Создать Secret для использования сертификата.
       > ![alt text](images/image94.png) \
       > [Манифест секретов](src/nginx-app.secrets.yaml) \
-      > ![alt text](images/image93.png) \
       > ![alt text](images/image83.png)
   4. Создать Ingress и необходимый Service, подключить к нему SSL в вид. Продемонстировать доступ к приложению по HTTPS. 
       > [Манифест ингресса](src/nginx-app.ingress.yaml) \
       > [Манифест сервиса](src/nginx-app.svc.yaml) \
-      > ![alt text](images/image91.png) \
-      > ![alt text](images/image92.png) \
+      > ![alt text](images/image82.png) \
       > запустил всё
       > ![alt text](images/image88.png)
   5. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
