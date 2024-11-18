@@ -48,6 +48,8 @@
       > ![alt text](images/image95.png)
   3. Создайте роли и все необходимые настройки для пользователя.
       > Далее подготовим манифесты роли и связки \
+      > [Role](src/baseuser.role.yaml) \
+      > [RoleBinding](src/baseuser.rolebinding.yaml) \
       > ![alt text](images/image94.png)
   4. Предусмотрите права пользователя. Пользователь может просматривать логи подов и их конфигурацию (`kubectl logs pod <pod_id>`, `kubectl describe pod <pod_id>`).
       > Ну а теперь начинаем применять всё что понаделали. Для этого осздаим [Деплоймент](src/nginx.deployment.yaml) и задеплоим его под пользователем. \
@@ -63,6 +65,10 @@
       > А теперь из неймпейса **production** \
       > ![alt text](images/image87.png)
   5. Предоставьте манифесты и скриншоты и/или вывод необходимых команд.
+      > [Role](src/baseuser.role.yaml) \
+      > [RoleBinding](src/baseuser.rolebinding.yaml) \
+      > [Deployment](src/nginx.deployment.yaml) \
+      > [Deployment](src/nginx.production.deployment.yaml) \
       > Ход выполнения задания представлен выше
 </details>
 
