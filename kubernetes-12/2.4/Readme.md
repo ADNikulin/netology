@@ -68,7 +68,7 @@
       > [Role](src/baseuser.role.yaml) \
       > [RoleBinding](src/baseuser.rolebinding.yaml) \
       > [Deployment](src/nginx.deployment.yaml) \
-      > [Deployment](src/nginx.production.deployment.yaml) \
+      > [Deployment Production](src/nginx.production.deployment.yaml) \
       > Ход выполнения задания представлен выше
 </details>
 
