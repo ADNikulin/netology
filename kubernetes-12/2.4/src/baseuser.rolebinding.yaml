@@ -1,0 +1,12 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pods-viewer-groups
+subjects:
+  - kind: User
+    name: baseuser
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: viewer
+  apiGroup: rbac.authorization.k8s.io
