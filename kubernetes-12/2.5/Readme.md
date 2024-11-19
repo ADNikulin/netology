@@ -38,7 +38,7 @@
 
   > СОздал новый хельмчарт \
   > ![alt text](images/image97.png) \
-  > Далее создал два values где в деве установил latest тег, а в test указал версию 1.26.2
+  > Далее создал два values где в деве установил latest тег, а в test указал версию 1.26.2 \
   > [develop](netology-app/values.develop.yaml) \
   > [test](netology-app/values.test.yaml)
 </details>
