@@ -1,0 +1,20 @@
+all:
+  hosts:
+    master-1:
+      ansible_host: 51.250.89.240
+      ip: 10.0.1.35
+      access_ip: 10.0.1.35
+    master-2:
+      ansible_host: 89.169.157.156
+      ip: 10.0.1.14
+      access_ip: 10.0.1.14
+    master-3:
+      ansible_host: 89.169.128.184
+      ip: 10.0.1.22
+      access_ip: 10.0.1.22
+  children:
+    kube_control_plane:
+      hosts:
+        master-1:
+        master-2:
+        master-3:
