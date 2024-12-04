@@ -58,7 +58,7 @@
   > ![alt text](images/image94.png) \
   > Я так понял что всё бы ничего, но не был настроен конфиг kubectl или что-то в этом духе. Посерфил инет нашел такое: https://github.com/kubernetes-sigs/kubespray/issues/1615 . \
   > Выполнил: ```sudo cp /etc/kubernetes/admin.conf $HOME/ && sudo chown $(id -u):$(id -g) $HOME/admin.conf && export KUBECONFIG=$HOME/admin.conf``` \
-  > далее повторная попытка \ 
+  > Далее повторная попытка \
   > ![alt text](images/image95.png) \
   > всё заработало. 
 </details>
