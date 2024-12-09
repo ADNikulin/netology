@@ -1,0 +1,6 @@
+cloud_id = "b1g3menglg4ufpjgjsho"
+folder_id = "b1grctf7tvhjcshed89i"
+# vms_ssh_root_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDXeFsPGdbWp1gAAh7w65saSNxqsM1pkD1oHbg+BztM65ETDAG1kxgUAJUA3T3t0YJWkQ3MNQcmM40jR5+LEVHjB2A328FxjXm4gDalTj8PCgDn3Xwy3fxgfrLipv4W031hu3u+aBbRzDA9gPP+TI5JTEc5kzVOrPqMeakZ6RilzufRrHc3ovFgaeytjJwcChapFf71M3FFb9qaJ0Z/PO1Tr30jXJGsSFw1695Y5gvVGR/82OpV6+/L6V8nJ+R2GpLPPtWG3SqIObDPOfo2E5Glrsz9aKtjQLbJStDdmjJ1OJuaWz4RgJWr8uKC8DEcPGa6efMUILlDXUGTNkL814S+RCaqlmpqfjZGXeR8jiqGFZb75ixYK7aijN8G8fub6NDKlr0v5+gAr+oN8bKUWdqzwbDBacufZPdeQ9ysvaMg8jF6UcBpJBQqM/oXh4Doy+BBPbJU4RNyZQ5BWI34LHHseERs1bu6/p5yeTXpL2lgNxXj//XOgaGDvynpDukW8fM= anikulin@anikulin-2204"
+# token = "Why do I need him here in principle?"
+
+default_zone = "ru-central1-a"
