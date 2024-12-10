@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-19
+  namespace: nginx-canary
+spec:
+  selector:
+    app: nginx-app-19
+  ports:
+    - name: web-nginx
+      port: 9003
+      targetPort: 80
+    - name: web-mtools
+      port: 9004
+      targetPort: 8080

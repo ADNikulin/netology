@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: nginx-canary
+  labels:
+    app: nginx-app-20
+spec:
+  replicas: 5
+  revisionHistoryLimit: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: nginx-app-20
+  template:
+    metadata:
+      labels:
+        app: nginx-app-20
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.20
+        volumeMounts:
+          - name: nginx-volume
+            mountPath: /usr/share/nginx/html/
+        ports:
+        - containerPort: 80
+      
+      - name: network-multitool
+        image: wbitt/network-multitool
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: HTTPS_PORT
+          value: "11443"
+        ports:
+        - containerPort: 8080
+          name: http-port
+        - containerPort: 11443
+          name: https-port
+
+      volumes:
+      - name: nginx-volume
+        configMap:
+          name: nginx-configmap-20

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-20
+  namespace: nginx-canary
+  annotations:
+    route-acl: "rand(100) lt 50"
+spec:
+  selector:
+    app: nginx-app-20
+  ports:
+    - name: web-nginx
+      port: 9003
+      targetPort: 80
+    - name: web-mtools
+      port: 9004
+      targetPort: 8080

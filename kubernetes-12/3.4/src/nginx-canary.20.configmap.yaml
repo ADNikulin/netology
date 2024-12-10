@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configmap-20
+  namespace: nginx-canary
+data:
+  index.html: |
+    <html>
+    <head>
+    <title>*** TEST NGINX 1.20 ***</title>
+    </head>
+    <body>
+    <h1>*** TEST NGINX 1.20 ***</h1>
+    </br>
+    <h1>ConfigMap Netology Kuber</h1>
+    </body>
+    </html
