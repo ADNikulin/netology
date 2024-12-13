@@ -32,15 +32,15 @@
   - [Compute Instance](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/compute_instance).
 
   > Подготовлены все файлы для создания инфры по заданию \
-  > [полный пак файлов](src/terraform) \
-  > - [data.tf](src/terraform/data.tf) - здесь все ресурсы и образы для машин \
-  > - [vpc-networks.tf](src/terraform/vpc-networks.tf) - Здесь сеть + подсеть \
-  > - [instance-nat.tf](src/terraform/instance-nat.tf) - Машина с натом, образ берется не из задания, и семейства **nat-instance-ubuntu**  \
-  > - [instance-public.tf](src/terraform/instance-public.tf) - Машина для публичного доступа \
-  > - [instance-private.tf](src/terraform/instance-private.tf) - Машина для приватной сети \
+  > [полный пак файлов](src/terraform): 
+  > - [data.tf](src/terraform/data.tf) - здесь все ресурсы и образы для машин
+  > - [vpc-networks.tf](src/terraform/vpc-networks.tf) - Здесь сеть + подсеть
+  > - [instance-nat.tf](src/terraform/instance-nat.tf) - Машина с натом, образ берется не из задания, и семейства **nat-instance-ubuntu**
+  > - [instance-public.tf](src/terraform/instance-public.tf) - Машина для публичного доступа
+  > - [instance-private.tf](src/terraform/instance-private.tf) - Машина для приватной сети
   > - [variables.tf](src/terraform/variables.tf) - Базовые переменные \
-  > - [providers.tf](src/terraform/providers.tf) - Базовая настройка доступа к провайдеру и vpc \
-  > - [route_table-private.tf](src/terraform/route_table-private.tf) - таблица маршрутизации \
+  > - [providers.tf](src/terraform/providers.tf) - Базовая настройка доступа к провайдеру и vpc
+  > - [route_table-private.tf](src/terraform/route_table-private.tf) - таблица маршрутизации
   > Собтственно запуск + план + apply, приводить не буду, разве что частичный план \
   > ![alt text](images/image95.png) \
   > Результат применения терраформа \
@@ -52,7 +52,7 @@
   > ![alt text](images/image97.png) \
   > Пинги с приватной машины без таблицы маршрутизации \
   > ![alt text](images/image96.png) \
-  > Готово. \
+  > Готово.
 </details>
 
 ---
