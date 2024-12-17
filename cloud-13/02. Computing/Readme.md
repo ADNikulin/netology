@@ -28,7 +28,7 @@
   > - [storage_object](src/storage_object.tf) - Загружаемый объект, там же и будет картинка
   > - [bucket](src/bucket.tf) - сама настрйока бакета. Тут же создаем все необходимые переменные сервис аккаунты для доступа, ключи и т.п.
   > - [providers](src/providers.tf) - используемый провайдер (yandex)
-  > - [сети](src/vpc-networks.tf) - создаем тут сам vpc, далее subnet 
+  > - [сети](src/vpc-networks.tf) - создаем тут сам vpc, далее subnet \
   > Далее инициируем терраформ и запускаем его.
   > - ![alt text](images/image99.png)
   > - ![alt text](images/image98.png)
