@@ -31,12 +31,12 @@
   > - [сети](src/vpc-networks.tf) - создаем тут сам vpc, далее subnet \
   > Далее инициируем терраформ и запускаем его.
   > - ![alt text](images/image99.png)
-  > - ![alt text](images/image98.png)
+  > - ![alt text](images/image98.png) \
   > Результаты:
   > - ![alt text](images/image97.png)
   > - ![alt text](images/image96.png)
   > - ![alt text](images/image95.png)
-  > - ![alt text](images/image94.png)
+  > - ![alt text](images/image94.png) \
   > картинка доступна и скачивается
   
   2. Создать группу ВМ в public подсети фиксированного размера с шаблоном LAMP и веб-страницей, содержащей ссылку на картинку из бакета:
@@ -51,13 +51,13 @@
   > - [сеть](src/vpc-networks.tf) - настройки сети
   > - [data](src/data.tf) - набор базовых перменных и образов + ссылок на ключики для доступа по ssh
   > - ![alt text](images/image80.png) - тут настраиваем базовый index шаблон, с ссылкой на бакет
-  > - ![alt text](images/image79.png) - Настрйока проверки состояния машин
+  > - ![alt text](images/image79.png) - Настрйока проверки состояния машин \
   > В общем запускаем терраформ и смотрим:
   > - ![alt text](images/image92.png) 
   > - ![alt text](images/image93.png)
-  > - ![alt text](images/image90.png)
+  > - ![alt text](images/image90.png) \
   > Видим три машины, зайдем и глянем что у них в index:
-  > - ![alt text](images/image81.png)
+  > - ![alt text](images/image81.png) \
   > Видим нашу картинку
 
   3. Подключить группу к сетевому балансировщику:
@@ -65,14 +65,14 @@
   - Создать сетевой балансировщик.
   - Проверить работоспособность, удалив одну или несколько ВМ.
 
-  > - [network_load_balancer](src/lb_network_load_balancer.tf)
+  > [network_load_balancer](src/lb_network_load_balancer.tf) - Сам балансировщик \
   > Балансировщик нагрузки будет регулярно проверять доступность порта 80 и пути "/" при обращении к группе виртуальных машин. Проверка будет проводиться каждые 2 секунды, и если ответ не будет получен в течение 1 секунды, балансировщик считает сервер недоступным. Для перевода сервера в недоступное состояние потребуется две неудачные проверки, а для возвращения в доступное — пять успешных. \
   > Запускаем террафом, смотрим поднялся ли он, получаем ip и заходим по нему: 
   > - ![alt text](images/image87.png)
-  > - ![alt text](images/image86.png)
+  > - ![alt text](images/image86.png) \
   > Теперь застопорим машины и првоерим его работу:
   > - ![alt text](images/image85.png)
-  > - ![alt text](images/image84.png)
+  > - ![alt text](images/image84.png) \
   > Доступ по прежнему имеется, кстати можно дополнительно глянуть на то, как машина сама поднялась: 
   > - ![alt text](images/image82.png)
 
@@ -82,18 +82,18 @@
   > - [alb_target_group](src/alb_target_group.tf) - таргет группы
   > - [alb_http_router](src/alb_http_router.tf) - роутер
   > - [alb_backend_group](src/alb_backend_group.tf) - ГРуппа бекендов
-  > - [alb_load_balancer](src/alb_load_balancer.tf) - Сам балансировщик
+  > - [alb_load_balancer](src/alb_load_balancer.tf) - Сам балансировщик \
   > Запускаем терраформ и смотрим результат: 
-  > - ![alt text](images/image91.png)
+  > - ![alt text](images/image91.png) \
   > Весь спсиок сервисов, который был поднят
   > - ![alt text](images/image89.png)
   > - ![alt text](images/image78.png)
   > - ![alt text](images/image77.png)
-  > - ![alt text](images/image76.png)
+  > - ![alt text](images/image76.png) \
   > Проверим базовую работоспособность роутера, пройдя по его ip и потом так же отключим машины и првоерим доступ
   > - ![alt text](images/image88.png)
   > - ![alt text](images/image85.png)
-  > - ![alt text](images/image83.png)
+  > - ![alt text](images/image83.png) \
   > Всё потом опять поднялось и работало
 
   Полезные документы:
