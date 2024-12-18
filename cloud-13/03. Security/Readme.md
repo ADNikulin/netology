@@ -47,40 +47,44 @@
 --- 
 ## Задание 2*. AWS (задание со звёздочкой)
 
-Это необязательное задание. Его выполнение не влияет на получение зачёта по домашней работе.
+<details>
+  <summary>Детали</summary>
 
-**Что нужно сделать**
+  Это необязательное задание. Его выполнение не влияет на получение зачёта по домашней работе.
 
-1. С помощью роли IAM записать файлы ЕС2 в S3-бакет:
- - создать роль в IAM для возможности записи в S3 бакет;
- - применить роль к ЕС2-инстансу;
- - с помощью bootstrap-скрипта записать в бакет файл веб-страницы.
-2. Организация шифрования содержимого S3-бакета:
+  **Что нужно сделать**
 
- - используя конфигурации, выполненные в домашнем задании из предыдущего занятия, добавить к созданному ранее бакету S3 возможность шифрования Server-Side, используя общий ключ;
- - включить шифрование SSE-S3 бакету S3 для шифрования всех вновь добавляемых объектов в этот бакет.
+  1. С помощью роли IAM записать файлы ЕС2 в S3-бакет:
+  - создать роль в IAM для возможности записи в S3 бакет;
+  - применить роль к ЕС2-инстансу;
+  - с помощью bootstrap-скрипта записать в бакет файл веб-страницы.
+  2. Организация шифрования содержимого S3-бакета:
 
-3. *Создание сертификата SSL и применение его к ALB:
+  - используя конфигурации, выполненные в домашнем задании из предыдущего занятия, добавить к созданному ранее бакету S3 возможность шифрования Server-Side, используя общий ключ;
+  - включить шифрование SSE-S3 бакету S3 для шифрования всех вновь добавляемых объектов в этот бакет.
 
- - создать сертификат с подтверждением по email;
- - сделать запись в Route53 на собственный поддомен, указав адрес LB;
- - применить к HTTPS-запросам на LB созданный ранее сертификат.
+  3. *Создание сертификата SSL и применение его к ALB:
 
-Resource Terraform:
+  - создать сертификат с подтверждением по email;
+  - сделать запись в Route53 на собственный поддомен, указав адрес LB;
+  - применить к HTTPS-запросам на LB созданный ранее сертификат.
 
-- [IAM Role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role).
-- [AWS KMS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key).
-- [S3 encrypt with KMS key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object#encrypting-with-kms-key).
+  Resource Terraform:
 
-Пример bootstrap-скрипта:
+  - [IAM Role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role).
+  - [AWS KMS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key).
+  - [S3 encrypt with KMS key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object#encrypting-with-kms-key).
 
-```
-#!/bin/bash
-yum install httpd -y
-service httpd start
-chkconfig httpd on
-cd /var/www/html
-echo "<html><h1>My cool web-server</h1></html>" > index.html
-aws s3 mb s3://mysuperbacketname2021
-aws s3 cp index.html s3://mysuperbacketname2021
-```
+  Пример bootstrap-скрипта:
+
+  ```
+  #!/bin/bash
+  yum install httpd -y
+  service httpd start
+  chkconfig httpd on
+  cd /var/www/html
+  echo "<html><h1>My cool web-server</h1></html>" > index.html
+  aws s3 mb s3://mysuperbacketname2021
+  aws s3 cp index.html s3://mysuperbacketname2021
+  ```
+</details>
